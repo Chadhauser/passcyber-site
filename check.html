@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Cyber Essentials Readiness Check — PassCyber</title>
+<meta name="description" content="Answer ten plain-English questions and get an instant readiness report against the five Cyber Essentials controls — including the two traps that fail businesses outright. Free, two minutes.">
+<link rel="canonical" href="https://passcyber.co.uk/check">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#132420;--paper:#eef1ee;--card:#ffffff;
+    --go:#12795a;--go-deep:#0d5a43;--warn:#b07515;--fail:#a1341f;
+    --line:#c9d2cd;--steel:#566862;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+  body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:620px;margin:0 auto;padding:0 22px}
+  a{color:var(--go)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
+
+  header{border-bottom:1px solid var(--line)}
+  .top{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;max-width:620px;margin:0 auto}
+  .brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;text-decoration:none;color:var(--ink)}
+  .brand b{color:var(--go)}
+  .top small{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--steel)}
+
+  .intro{padding:50px 0 36px}
+  .kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--go);margin-bottom:14px}
+  h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,5.5vw,40px);line-height:1.08;letter-spacing:-.02em}
+  .intro p{margin-top:16px;color:var(--steel);max-width:52ch}
+  .btn{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;padding:13px 26px;border-radius:2px;text-decoration:none;display:inline-block;border:0;cursor:pointer;transition:.15s}
+  .btn-go{background:var(--go);color:#fff}
+  .btn-go:hover{background:var(--go-deep)}
+  .btn-line{border:1.5px solid var(--ink);color:var(--ink);background:transparent}
+  .btn-line:hover{background:var(--ink);color:var(--paper)}
+  .intro .start{margin-top:26px}
+
+  .quiz{display:none;padding:32px 0 56px}
+  .quiz.active{display:block}
+  .qmeta{display:flex;justify-content:space-between;align-items:baseline;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--steel);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+  .qmeta .ctrl{color:var(--go)}
+  .qbar{height:3px;background:var(--line);margin-bottom:30px;position:relative}
+  .qbar i{position:absolute;inset:0 auto 0 0;background:var(--go);transition:width .25s ease}
+  .qtext{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(20px,4vw,26px);line-height:1.22;margin-bottom:8px}
+  .qhelp{color:var(--steel);font-size:14.5px;margin-bottom:22px}
+  .opts{display:grid;gap:10px}
+  .opt{text-align:left;font:inherit;cursor:pointer;background:var(--card);border:1px solid var(--line);border-radius:2px;padding:14px 16px;transition:.12s}
+  .opt:hover{border-color:var(--go)}
+  .qnav{margin-top:26px}
+  .back{background:none;border:0;font:inherit;color:var(--steel);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+  .back:hover{color:var(--ink)}
+
+  .report{display:none;padding:36px 0 40px}
+  .report.active{display:block}
+  .cert{background:var(--card);border:1px solid var(--ink);border-radius:3px;padding:28px 26px}
+  .cert-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:16px}
+  .cert-head h2{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+  .cert-head time{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--steel)}
+  .bigverdict{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(26px,5vw,34px);display:flex;align-items:center;gap:14px;line-height:1.1}
+  .bigverdict .badge{min-width:44px;height:44px;padding:0 8px;border-radius:6px;display:grid;place-items:center;color:#fff;font-size:20px}
+  .v-ready .badge{background:var(--go)} .v-ready{color:var(--go-deep)}
+  .v-close .badge{background:var(--warn)} .v-close{color:var(--warn)}
+  .v-fail .badge{background:var(--fail)} .v-fail{color:var(--fail)}
+  .vsub{margin-top:12px;font-size:15px;color:var(--ink)}
+  .autofail{margin-top:16px;border:1px solid var(--fail);border-radius:2px;padding:14px 16px;background:rgba(161,52,31,.05)}
+  .autofail h4{font-family:'Space Grotesk',sans-serif;font-size:14px;color:var(--fail);margin-bottom:6px}
+  .autofail p{font-size:13.5px;color:var(--ink);margin:0}
+  .controls{margin-top:20px;display:grid;gap:0}
+  .crow{display:flex;justify-content:space-between;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:13px;padding:10px 0;border-bottom:1px dotted var(--line)}
+  .crow .tag{font-weight:500}
+  .tag.pass{color:var(--go)} .tag.part{color:var(--warn)} .tag.gap{color:var(--fail)}
+  .capture{margin-top:30px;border-top:1px solid var(--line);padding-top:26px}
+  .capture h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:21px;margin-bottom:8px}
+  .capture p{color:var(--steel);font-size:14.5px;margin-bottom:18px;max-width:52ch}
+  .caprow{display:flex;gap:12px;flex-wrap:wrap}
+  .fineprint{margin-top:16px;font-size:12px;color:var(--steel)}
+
+  footer{border-top:1px solid var(--line);margin-top:40px;padding:24px 0 40px}
+  footer p{font-size:12px;color:var(--steel);max-width:66ch}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="top">
+    <a href="/" class="brand">Pass<b>Cyber</b></a>
+    <small>Readiness Check</small>
+  </div>
+</header>
+
+<section class="intro wrap" id="intro">
+  <div class="kicker">Free · Two minutes · No sign-up to see your result</div>
+  <h1>Would you pass Cyber Essentials today?</h1>
+  <p>Ten plain-English questions about how your business runs its computers. You'll get an instant readiness report against all five controls — and we'll flag the two traps that fail businesses outright, before they cost you the certificate.</p>
+  <div class="start"><button class="btn btn-go" onclick="start()">Start the check</button></div>
+</section>
+
+<section class="quiz wrap" id="quiz" aria-live="polite">
+  <div class="qmeta"><span id="qcount">01 / 10</span><span class="ctrl" id="qctrl">Firewalls</span></div>
+  <div class="qbar"><i id="qfill" style="width:10%"></i></div>
+  <div class="qtext" id="qtext"></div>
+  <div class="qhelp" id="qhelp"></div>
+  <div class="opts" id="opts"></div>
+  <div class="qnav"><button class="back" id="back" onclick="goBack()">Back</button></div>
+</section>
+
+<section class="report wrap" id="report">
+  <div class="cert">
+    <div class="cert-head"><h2>Cyber Essentials · Readiness Report</h2><time id="rdate"></time></div>
+    <div class="bigverdict" id="verdict"></div>
+    <p class="vsub" id="vsub"></p>
+    <div id="autofails"></div>
+    <div class="controls" id="controls"></div>
+  </div>
+
+  <div class="capture">
+    <h3 id="caphead"></h3>
+    <p id="capbody"></p>
+    <div class="caprow">
+      <a class="btn btn-go" id="emailbtn" href="#">Send my result to PassCyber</a>
+      <button class="btn btn-line" onclick="restart()">Start again</button>
+    </div>
+    <p class="fineprint">Indicative only — a readiness view, not a certification decision. The formal assessment uses the full IASME question set.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>PassCyber prepares and manages Cyber Essentials submissions for UK businesses. Cyber Essentials is owned by the National Cyber Security Centre and delivered by IASME; PassCyber is not affiliated with either. This tool gives an informal readiness indication based on the five controls and current pass rules. hello@passcyber.co.uk</p>
+  </div>
+</footer>
+
+<script>
+const CONTACT_EMAIL = "hello@passcyber.co.uk";
+
+const Q = [
+  {c:"Firewalls", t:"Has the default password on your internet router (or firewall) been changed?", h:"The password it came with out of the box — not your wifi password.",
+   o:[["Yes, it's been changed",10],["Not sure",3],["No, still the default",0]]},
+  {c:"Firewalls", t:"Do your work computers have their firewall switched on?", h:"Windows and Mac both include one; it's usually on by default.",
+   o:[["Yes, on all of them",10],["On some / not sure",4],["No",0]]},
+  {c:"Secure configuration", t:"Have you removed software and user accounts you no longer use?", h:"Old trial apps, ex-staff logins, anything that's just sitting there.",
+   o:[["Yes, we keep it tidy",10],["Partly",5],["No / not sure",0]]},
+  {c:"Secure configuration", t:"Do your devices lock themselves after a short time, needing a password or PIN?", h:"An auto-lock screen when left unattended.",
+   o:[["Yes, all of them",10],["Some",5],["No",0]]},
+  {c:"User access control", t:"Do people use ordinary (non-admin) accounts for everyday work?", h:"Admin rights used only when actually installing or changing something.",
+   o:[["Yes",10],["Mixed / not sure",4],["Everyone's an admin",0]]},
+  {c:"User access control", t:"Is two-step login (MFA) switched on for every cloud service that offers it?", h:"Email, Microsoft 365 or Google, accounting, banking. This one is critical.", trap:"mfa",
+   o:[["Yes, on all of them",10],["On some of them",5,"mfa"],["No / not sure",0,"mfa"]]},
+  {c:"Malware protection", t:"Is anti-virus / anti-malware running on your computers?", h:"Built-in protection like Windows Defender counts.",
+   o:[["Yes, on all",10],["On some",5],["No / not sure",0]]},
+  {c:"Security update management", t:"Are security updates applied within about two weeks of release?", h:"Operating system and app updates — within 14 days is the rule. This one is critical.", trap:"patch",
+   o:[["Yes, promptly",10],["Eventually, not always quick",5,"patch"],["No / not sure",0,"patch"]]},
+  {c:"Security update management", t:"Is everything you use still supported (still getting updates)?", h:"No very old Windows, unsupported phones, or end-of-life software.",
+   o:[["Yes, all current",10],["Not sure",4],["We have old kit",0]]},
+  {c:"User access control", t:"Are your passwords long — 12+ characters, or a password manager / three random words?", h:"Length beats complexity; a manager makes it easy.",
+   o:[["Yes",10],["Some are",5],["No / not sure",0]]}
+];
+
+const CONTROLS = ["Firewalls","Secure configuration","User access control","Malware protection","Security update management"];
+
+let i=0; const ans=new Array(Q.length).fill(null);
+
+function show(id){['intro','quiz','report'].forEach(s=>{document.getElementById(s).classList.remove('active');document.getElementById(s).style.display=(s===id?'':'none')});document.getElementById(id).classList.add('active');window.scrollTo({top:0});}
+function start(){i=0;render();show('quiz');}
+function restart(){ans.fill(null);document.getElementById('intro').style.display='';['quiz','report'].forEach(s=>document.getElementById(s).classList.remove('active'));window.scrollTo({top:0});}
+
+function render(){
+  const q=Q[i];
+  document.getElementById('qcount').textContent=String(i+1).padStart(2,'0')+' / '+String(Q.length).padStart(2,'0');
+  document.getElementById('qctrl').textContent=q.c;
+  document.getElementById('qfill').style.width=((i+1)/Q.length*100)+'%';
+  document.getElementById('qtext').textContent=q.t;
+  document.getElementById('qhelp').textContent=q.h;
+  const box=document.getElementById('opts');box.innerHTML='';
+  q.o.forEach((o,k)=>{const b=document.createElement('button');b.className='opt';b.textContent=o[0];b.onclick=()=>{ans[i]={pts:o[1],trap:o[2]||null};if(i<Q.length-1){i++;render();}else{finish();}};box.appendChild(b);});
+  document.getElementById('back').style.visibility=i===0?'hidden':'visible';
+}
+function goBack(){if(i>0){i--;render();}}
+
+function finish(){
+  let total=0; const perControl={}; CONTROLS.forEach(c=>perControl[c]={got:0,max:0});
+  let mfaFail=false, patchFail=false;
+  Q.forEach((q,k)=>{
+    total+=ans[k].pts;
+    perControl[q.c].got+=ans[k].pts; perControl[q.c].max+=10;
+    if(ans[k].trap==='mfa')mfaFail=true;
+    if(ans[k].trap==='patch')patchFail=true;
+  });
+  const autofail = mfaFail || patchFail;
+
+  const V=document.getElementById('verdict'), S=document.getElementById('vsub');
+  let band;
+  if(autofail){ band='fail';
+    V.className='bigverdict v-fail'; V.innerHTML='<span class="badge">✕</span> Not ready yet';
+    S.textContent='You scored '+total+'/100, but one of the two critical rules isn\u2019t met — and either one fails a real submission outright. The good news: these are usually quick, specific fixes.';
+  } else if(total>=80){ band='ready';
+    V.className='bigverdict v-ready'; V.innerHTML='<span class="badge">✓</span> Ready to certify';
+    S.textContent='You scored '+total+'/100 with both critical rules met. You look genuinely close — a clean submission is well within reach.';
+  } else { band='close';
+    V.className='bigverdict v-close'; V.innerHTML='<span class="badge">!</span> Close — a few gaps';
+    S.textContent='You scored '+total+'/100 and cleared both critical rules. A handful of fixes would get you certification-ready.';
+  }
+
+  const AF=document.getElementById('autofails'); AF.innerHTML='';
+  if(mfaFail){AF.innerHTML+='<div class="autofail"><h4>Trap 1 — two-step login (MFA)</h4><p>At least one cloud service isn\u2019t fully protected with two-step login. Under the current rules that fails the assessment on its own. It\u2019s usually a 10-minute fix per service.</p></div>';}
+  if(patchFail){AF.innerHTML+='<div class="autofail"><h4>Trap 2 — 14-day updates</h4><p>Security updates aren\u2019t reliably applied within 14 days. That also fails outright. Turning on automatic updates usually solves it.</p></div>';}
+
+  const C=document.getElementById('controls'); C.innerHTML='';
+  CONTROLS.forEach(c=>{
+    const pc=perControl[c]; const pct=pc.max?pc.got/pc.max:0;
+    let tag,cls; if(pct>=0.9){tag='Pass';cls='pass';}else if(pct>=0.5){tag='Partial';cls='part';}else{tag='Gap';cls='gap';}
+    if(c==='User access control' && mfaFail){tag='Gap — MFA';cls='gap';}
+    if(c==='Security update management' && patchFail){tag='Gap — updates';cls='gap';}
+    C.innerHTML+='<div class="crow"><span>'+c+'</span><span class="tag '+cls+'">'+tag+'</span></div>';
+  });
+
+  document.getElementById('rdate').textContent=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+
+  const H=document.getElementById('caphead'), B=document.getElementById('capbody');
+  if(band==='ready'){H.textContent='Get it over the line';B.textContent='You\u2019re close. Send your result across and we\u2019ll prepare and manage the full submission for you — guaranteed pass, fixed fee. Most of the work is ours.';}
+  else if(band==='close'){H.textContent='Let\u2019s close the gaps';B.textContent='A few specific fixes stand between you and the badge. Send your result over and we\u2019ll tell you exactly what to change — or do the whole thing for you, guaranteed.';}
+  else{H.textContent='These are fixable — fast';B.textContent='The critical items are usually the quickest to fix. Send your result across and we\u2019ll sort them and manage your whole submission to a guaranteed pass.';}
+
+  const lines = CONTROLS.map(c=>{const pc=perControl[c];const pct=pc.max?Math.round(pc.got/pc.max*100):0;return c+': '+pct+'%';}).join('%0D%0A');
+  const traps = (mfaFail?'MFA trap flagged. ':'')+(patchFail?'14-day update trap flagged.':'')||'No critical traps.';
+  const subj = encodeURIComponent('CE Readiness '+total+'/100 — '+(band==='fail'?'critical gaps':band==='ready'?'ready':'close'));
+  const body = 'My Cyber Essentials readiness result:%0D%0A%0D%0AScore: '+total+'/100%0D%0A'+lines+'%0D%0A'+traps+'%0D%0A%0D%0AI\u2019d like PassCyber to help me get certified. Best number to reach me: ';
+  document.getElementById('emailbtn').href='mailto:'+CONTACT_EMAIL+'?subject='+subj+'&body='+body;
+
+  show('report');
+}
+</script>
+</body>
+</html>
