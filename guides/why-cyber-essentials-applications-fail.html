@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Why Cyber Essentials applications fail — and how to avoid it</title>
-<meta name="description" content="The most common reasons a Cyber Essentials self-assessment is marked as non-compliant: unsupported software, missing MFA, scope errors, default credentials and patching delays. What assessors actually look for.">
+<title>Why Cyber Essentials applications fail under Danzell — the two automatic failures</title>
+<meta name="description" content="Under the Danzell question set, missing MFA on a cloud service and patching slower than 14 days each fail the whole assessment outright. Plus the scoping, account and default-credential errors that catch small organisations out.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://passcyber.co.uk/guides/why-cyber-essentials-applications-fail">
 <meta name="theme-color" content="#132420">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="PassCyber">
-<meta property="og:title" content="Why Cyber Essentials applications fail — and how to avoid it">
-<meta property="og:description" content="The most common reasons an application is marked non-compliant, and what to fix before you submit.">
+<meta property="og:title" content="Why Cyber Essentials applications fail under Danzell">
+<meta property="og:description" content="Two answers now fail the whole assessment on their own. Here is what they are and what else catches people out.">
 <meta property="og:url" content="https://passcyber.co.uk/guides/why-cyber-essentials-applications-fail">
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary">
@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/guide.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Why Cyber Essentials applications fail — and how to avoid it","description":"The most common reasons an application is marked non-compliant, and what to fix before you submit.","datePublished":"2026-08-23","dateModified":"2026-08-23","inLanguage":"en-GB","mainEntityOfPage":{"@type":"WebPage","@id":"https://passcyber.co.uk/guides/why-cyber-essentials-applications-fail"},"author":{"@type":"Person","name":"Peter Edwards"},"publisher":{"@type":"Organization","name":"PassCyber","url":"https://passcyber.co.uk"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Why Cyber Essentials applications fail under Danzell","description":"Two answers now fail the whole assessment on their own. Here is what they are and what else catches people out.","datePublished":"2026-08-23","dateModified":"2026-08-23","inLanguage":"en-GB","mainEntityOfPage":{"@type":"WebPage","@id":"https://passcyber.co.uk/guides/why-cyber-essentials-applications-fail"},"author":{"@type":"Person","name":"Peter Edwards"},"publisher":{"@type":"Organization","name":"PassCyber","url":"https://passcyber.co.uk"}}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -39,90 +39,101 @@
 <div class="doc">
   <span class="crumb"><a href="/">PassCyber</a> / <a href="/guides/">Guides</a></span>
   <h1>Why Cyber Essentials applications fail</h1>
-  <p class="stand">Most organisations that fail do not fail because they are badly defended. They fail on a handful of predictable things — nearly all of which are cheaper to fix before submission than after.</p>
-  <div class="meta"><span>For small organisations</span><span>Reading time 7 minutes</span></div>
+  <p class="stand">Under the current question set, two answers fail the entire assessment on their own — no matter how good everything else is. Knowing which two, and what else commonly goes wrong, is most of the battle.</p>
+  <div class="meta"><span>Current question set: Danzell</span><span>Requirements v3.3</span><span>Reading time 8 minutes</span></div>
 
 <div class="prose">
 
 <p>Cyber Essentials is a self-assessment, marked by a qualified assessor against a published question set. That combination catches people out. Because it is self-assessed, organisations assume it is a paperwork exercise; because it is marked by an assessor, every answer has to be defensible against a specific technical requirement.</p>
 
-<p>The failures cluster. Here are the ones that come up again and again, and what to do about each.</p>
+<p>Since the Danzell question set came in, the marking is stricter in one significant way. It used to be possible to pick up a couple of major non-compliances and still scrape a pass. Two areas are now automatic failures: get either wrong and the assessment fails outright, regardless of everything else on the form.</p>
 
-<h2>1. Software the vendor no longer supports</h2>
+<h2>Automatic failure 1: MFA missing on a cloud service that offers it</h2>
 
-<p>This is the most common single cause. Every operating system and every piece of software in scope must still be receiving security updates from its vendor. Anything past end of support is an automatic problem — not a point deduction, a fail.</p>
+<p>Multi-factor authentication was previously expected. It is now mandatory on every cloud service where it is available, for <strong>all users</strong> — not just administrators. If a service offers MFA and it has not been turned on, the assessment fails.</p>
 
-<p>The usual suspects are an old Windows machine kept because it runs one piece of equipment, an Android phone that stopped getting updates two years ago, an unsupported macOS version on somebody's older Mac, and — frequently forgotten — network hardware. A router supplied by an internet provider a decade ago is unlikely to be receiving firmware updates.</p>
-
-<div class="flag">
-  <div class="t">What to do</div>
-  <p>Inventory every device and every operating system version before you answer anything, and check each against its vendor's support lifecycle. Where something cannot be upgraded, the options are to replace it, or to segregate it from the rest of the network so it is genuinely out of scope — and segregation must be real, not aspirational.</p>
-</div>
-
-<h2>2. Multi-factor authentication missing on cloud services</h2>
-
-<p>MFA is expected on cloud services, and especially on administrative accounts. Where a service offers it and it has not been switched on, that is a finding.</p>
-
-<p>Organisations tend to enable it on the obvious things — email, banking — and miss the rest: the accounting package, the CRM, the website content management system, the file storage, the domain registrar. The domain registrar is worth singling out, because anyone who controls it controls your email.</p>
-
-<h2>3. The scope does not match reality</h2>
-
-<p>Scoping is where the most expensive mistakes happen, because a scope error discovered by the assessor means rework across every answer.</p>
-
-<p>The rule that surprises people: any device used to access organisational data or services is in scope, including personally owned ones. If a director reads work email on their own phone, that phone is in scope and must meet the requirements. "We only certify the office computers" is not a scope; whole-organisation certification means the whole organisation.</p>
-
-<p>Home working does not remove a device from scope either. A laptop used at home is in scope, and the requirement attaches to the device's own firewall rather than to the domestic router.</p>
+<p>The part that surprises people: it makes no difference whether MFA is free, bundled into your plan, provided via another service, or only available as a paid add-on. Availability is the test, not convenience or cost.</p>
 
 <div class="flag">
-  <div class="t">The decision to make first</div>
-  <p>Either bring personal devices up to standard and include them, or remove the need for them by providing equipment or restricting access to browser-based services with nothing held locally. Both are legitimate. What fails is leaving the question unanswered and hoping the assessor does not ask.</p>
+  <div class="t">Where organisations get caught</div>
+  <p>Most switch MFA on for email and banking and stop there. The forgotten services are the accounting package, the CRM, file storage, the website content management system, the payroll system, the fundraising or booking platform — and the domain registrar, which is worth singling out because whoever controls it controls your email.</p>
+  <p>List every cloud service the organisation uses, check each one for an MFA option, and enable it everywhere it exists. Any service where it is available and switched off is a failed assessment.</p>
 </div>
 
-<h2>4. Accounts and administrative privilege</h2>
+<h2>Automatic failure 2: high-risk updates not applied within 14 days</h2>
 
-<p>Three related findings sit here. Shared logins — one account several people use — fail, because access has to be traceable to an individual. Everyday work carried out from an account with administrative rights fails; administrators need a separate standard account for ordinary use. And accounts belonging to people who have left, or to a former supplier, must be removed rather than merely unused.</p>
+<p>Security updates rated critical or high risk must be installed within 14 days of release. Miss that and, again, the whole assessment fails.</p>
 
-<p>Add to that a documented process for granting and revoking access. Assessors ask how you know an account list is current, and "we would remember" is not a process.</p>
+<p>This covers more than Windows updates. Operating systems, applications, and — the one most often overlooked — network devices and firmware: routers, firewalls, wireless access points. A firewall that has not had a firmware update in two years is a problem even if every laptop is immaculate.</p>
 
-<h2>5. Default credentials still in place</h2>
-
-<p>Anything with a factory-set password must have been changed — routers, wireless access points, printers, network storage, cameras, and any admin interface on a device installed by a contractor. Printers and cameras are the ones organisations forget, because nobody thinks of them as computers, and both are routinely reachable from the internet when badly configured.</p>
-
-<h2>6. Patching not applied promptly</h2>
-
-<p>Security updates rated critical or high must be applied within a short window of release, and the expectation is measured in days rather than months. Automatic updates being available is not the same as automatic updates being enabled and verified — and mobile devices, browsers and third-party applications count alongside the operating system.</p>
+<p>Note also that automatic updates being <em>available</em> is not the same as automatic updates being enabled and verified. The requirement is that the updates are actually installed, within the window.</p>
 
 <div class="ok">
-  <div class="t">A useful test</div>
-  <p>Pick any device at random and check when it last installed updates. If you cannot find out in two minutes, an assessor will not be satisfied either — and that gap in visibility is itself the problem worth fixing.</p>
+  <div class="t">A two-minute test</div>
+  <p>Pick a device at random and find out when it last installed updates. Then do the same for the router. If you cannot establish it quickly, an assessor will not be able to either — and that lack of visibility is itself the thing to fix, because it is what makes the 14-day rule unprovable.</p>
 </div>
+
+<h2>3. Software the vendor no longer supports</h2>
+
+<p>Everything in scope must still be receiving security updates from its vendor. Anything past end of support is a fail — logically enough, since unsupported software cannot meet a 14-day patching rule when no patches exist.</p>
+
+<p>The usual suspects: an old Windows machine kept because it runs one piece of equipment, an Android phone that stopped receiving updates two years ago, an unsupported macOS version on an older Mac, and network hardware supplied by an internet provider a decade ago.</p>
+
+<p>Where something genuinely cannot be upgraded, the options are to replace it or to segregate it properly from the rest of the network so it falls outside the scope — and segregation has to be real, not aspirational.</p>
+
+<h2>4. Scope that does not match reality</h2>
+
+<p>Scoping is where the most expensive mistakes happen, because an error discovered by the assessor means rework across every answer.</p>
+
+<p><strong>Cloud services are now formally defined and cannot be excluded.</strong> That closed a route some organisations previously used. Whatever the organisation uses, it is in scope.</p>
+
+<p>Partial scoping of networks is still permitted, but it is no longer something you can do quietly — where a network is excluded, the reason has to be justified to the assessor. "We only certify the office computers" is not a justification.</p>
+
+<p>And the rule that catches small organisations hardest: any device used to access organisational data or services is in scope, including personally owned ones. If a trustee or director reads work email on their own phone, that phone is in scope and has to meet the requirements. Home working does not remove a device either — a laptop used at home is in scope, and the requirement attaches to the device's own firewall rather than the domestic router.</p>
+
+<div class="flag">
+  <div class="t">Decide this before answering anything</div>
+  <p>Either bring personal devices up to standard and include them, or remove the need for them — organisation-provided equipment for the roles that handle data, or access restricted to browser-based services with nothing stored locally. Both are legitimate. What fails is leaving the question open and hoping it is not asked.</p>
+</div>
+
+<h2>5. Accounts and administrative privilege</h2>
+
+<p>Three related findings live here. Shared logins fail, because access has to be traceable to an individual. Everyday work carried out from an account with administrative rights fails; administrators need a separate standard account for ordinary use. And accounts belonging to people who have left, or to a former supplier, must be removed rather than merely unused.</p>
+
+<p>Behind all three sits a documented process for granting and revoking access. Assessors ask how you know your account list is current, and "we would remember" is not a process.</p>
+
+<h2>6. Default credentials still in place</h2>
+
+<p>Anything with a factory-set password must have been changed — routers, wireless access points, printers, network storage, cameras, and any admin interface configured by a contractor. Printers and cameras are the forgotten ones, because nobody thinks of them as computers, and both are routinely reachable from the internet when badly configured.</p>
 
 <h2>7. Answers that describe intentions</h2>
 
-<p>The question set asks what is in place, not what is planned. Answers phrased as "we are in the process of", "we intend to" or "generally we" are read as the control not being in place. Either the control is implemented at the point of submission or it is not; there is no partial credit, and softening the language does not help.</p>
+<p>The question set asks what is in place, not what is planned. Answers phrased as "we are in the process of", "we intend to" or "generally we" are read as the control not being in place. Either it is implemented at the point of submission or it is not — there is no partial credit, and softening the language does not help.</p>
 
 <h2>8. Answers inconsistent with each other</h2>
 
-<p>Assessors read the whole submission. A declared device count that does not match the numbers given elsewhere, a cloud service mentioned in one answer but absent from the list, mobile devices excluded in one place and referenced in another — each of these generates a query, and queries cost time. Read the completed set through as a whole before submitting, checking that every number and list agrees.</p>
+<p>Assessors read the whole submission. A device count that does not match the numbers given elsewhere, a cloud service mentioned in one answer but missing from the list, mobile devices excluded in one place and referenced in another — each generates a query, and queries cost time. Read the completed set through as a whole before submitting, checking every number and list agrees.</p>
 
-<h2>What happens if you do fail</h2>
+<h2>Which rules apply to you</h2>
 
-<p>It is not catastrophic. Certification bodies generally allow a short window in which to correct issues and resubmit without a further full fee, though the specifics vary by body and by scheme year. The real cost is time — and the awkwardness of having told a customer or funder that certification was in hand.</p>
+<p>The Danzell question set and version 3.3 of the requirements apply to assessment accounts created from late April 2026, with transitional arrangements for accounts created before that. An existing certificate is not invalidated by the change — but your next assessment will be marked under the current rules, which is the thing to plan for at renewal rather than discover at submission.</p>
+
+<p>Certification bodies generally allow a window in which to correct issues and resubmit, though the specifics vary. The real cost of failing is rarely the fee; it is the time, and the awkwardness of having told a customer or funder that certification was in hand.</p>
 
 <h2>The pattern underneath all of it</h2>
 
-<p>Almost every failure above traces back to the same root: the organisation did not have an accurate picture of its own devices, accounts and services before it started answering. Build that inventory first — every device, every operating system version, every cloud service, every person with access — and most of the question set answers itself. Skip it, and you are guessing on questions where guessing is what gets found.</p>
+<p>Almost every failure above traces to the same root: the organisation did not have an accurate picture of its own devices, accounts and cloud services before it started answering. Build that inventory first — every device, every operating system version, every cloud service, every person with access — and most of the question set answers itself. Skip it, and you are guessing on exactly the questions where guessing now costs you the whole assessment.</p>
 
 <div class="cta">
   <div class="t">PassCyber</div>
   <h2>Find out what would fail before it does</h2>
-  <p>Our free readiness check takes a few minutes and tells you where you currently stand against the requirements — no sign-up needed to see the result.</p>
+  <p>Our free readiness check runs through the requirements in a few minutes and tells you where you currently stand — no sign-up needed to see the result.</p>
   <p>If you would rather not do it yourself, we scope the assessment, tell you plainly what would fail, fix it, and take you through certification.</p>
   <p><a href="/check">Take the readiness check</a> &nbsp;·&nbsp; <a href="mailto:hello@passcyber.co.uk?subject=Cyber%20Essentials%20enquiry">hello@passcyber.co.uk</a></p>
   <p class="sig">PassCyber is a trading name of Edwards Bros (Spaldwick) Ltd</p>
 </div>
 
-<p style="font-size:14px;color:var(--steel)">Requirements are set out in the current Cyber Essentials question set and are reviewed periodically. Always check the requirements applying at the time of your assessment, as the scheme is updated and specific wording changes between versions.</p>
+<p style="font-size:14px;color:var(--steel)">Requirements are set by the NCSC and IASME and are reviewed periodically. This guide reflects the Danzell question set and version 3.3 of the Requirements for IT Infrastructure. Always confirm the requirements applying to your own assessment, as question sets and marking criteria change between scheme years.</p>
 
 </div>
 </div>
