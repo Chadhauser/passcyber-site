@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cyber Essentials for schools and academy trusts: scope, pupil devices and the DfE standards</title>
+<meta name="description" content="What Cyber Essentials means for a school or academy trust: how scope works across a trust, whether pupil devices count, the shared logins problem, MIS and cloud services, and where school certifications usually fail.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://passcyber.co.uk/guides/cyber-essentials-schools">
+<meta name="theme-color" content="#132420">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="PassCyber">
+<meta property="og:title" content="Cyber Essentials for schools and academy trusts">
+<meta property="og:description" content="How scope works across a trust, whether pupil devices count, and where school certifications usually fail.">
+<meta property="og:url" content="https://passcyber.co.uk/guides/cyber-essentials-schools">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/guide.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Cyber Essentials for schools and academy trusts","description":"How scope works across a trust, whether pupil devices count, and where school certifications usually fail.","datePublished":"2026-08-23","dateModified":"2026-08-23","inLanguage":"en-GB","mainEntityOfPage":{"@type":"WebPage","@id":"https://passcyber.co.uk/guides/cyber-essentials-schools"},"author":{"@type":"Person","name":"Peter Edwards"},"publisher":{"@type":"Organization","name":"PassCyber","url":"https://passcyber.co.uk"}}</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Do schools need Cyber Essentials?","acceptedAnswer":{"@type":"Answer","text":"It is not universally mandatory, but it is increasingly expected. The Department for Education's digital and technology standards for schools and colleges point schools towards the same technical controls Cyber Essentials assesses, and certification is a recognised way of demonstrating them. It is also frequently required by insurers, by some grant and contract arrangements, and by trusts setting expectations across their schools."}},
+{"@type":"Question","name":"Are pupil devices in scope for Cyber Essentials?","acceptedAnswer":{"@type":"Answer","text":"It depends on what the devices access. Devices used only for teaching and learning activities, with no access to organisational data or administrative systems, can often be scoped differently from staff devices. Devices that access the management information system, staff email or administrative data are in scope. The decision needs to be made deliberately and justified to the assessor rather than assumed."}},
+{"@type":"Question","name":"Can a multi-academy trust certify all its schools at once?","acceptedAnswer":{"@type":"Answer","text":"A certificate covers named legal entities. For a multi-academy trust the trust is normally the legal entity, so certification can cover the trust including its schools, provided the scope is described accurately and the controls are genuinely met across all of it. Where individual schools run materially different systems, this is harder than it sounds and needs establishing before submission rather than during it."}},
+{"@type":"Question","name":"What usually fails a school Cyber Essentials assessment?","acceptedAnswer":{"@type":"Answer","text":"Four things recur: shared or generic logins for staff and classroom machines; multi-factor authentication missing on the management information system or other cloud services; devices running operating systems past vendor support, often in specialist or older classroom equipment; and accounts belonging to former staff, supply teachers or departed governors that were never removed."}}
+]}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="/">Pass<b>Cyber</b></a>
+    <nav>
+      <a href="/guides/">Guides</a>
+      <a href="/check">Readiness Check</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div class="wrap">
+<div class="doc">
+  <span class="crumb"><a href="/">PassCyber</a> / <a href="/guides/">Guides</a></span>
+  <h1>Cyber Essentials for schools and academy trusts</h1>
+  <p class="stand">Schools have more devices, more users and more turnover than almost any organisation of comparable size — and a scoping question nobody else has to answer.</p>
+  <div class="meta"><span>For business managers, bursars and trust finance leads</span><span>Reading time 7 minutes</span></div>
+
+<div class="prose">
+
+<p>Cyber Essentials reaches schools from several directions at once. Insurers ask. The Department for Education's digital and technology standards point at the same technical controls the scheme assesses. Trusts set expectations across their schools. And somewhere behind all of it sits the uncomfortable fact that schools hold a great deal of data about children.</p>
+
+<p>The five controls are the same as for any organisation. What differs is the shape of a school's estate, and three questions that only schools have to answer.</p>
+
+<h2>The pupil device question</h2>
+
+<p>This is the one that stops school certifications before they start, and the answer is more workable than it first appears.</p>
+
+<p>Scope follows access to organisational data and services. A set of classroom tablets used only for teaching and learning, with no route into the management information system, staff email or administrative data, sits in a different position from the business manager's laptop. Devices that <em>do</em> reach administrative systems are in scope, whoever is holding them.</p>
+
+<p>What matters is that the boundary is real and can be described. A school that can say clearly which systems pupil devices reach, and demonstrate that they cannot reach the rest, has a defensible scope. A school that assumes pupil devices are out of scope because they belong to pupils does not — and under the current requirements, any exclusion has to be justified to the assessor rather than simply left off the form.</p>
+
+<div class="flag">
+  <div class="t">Settle this first</div>
+  <p>The pupil device decision determines the size of everything that follows. Make it deliberately, write down the reasoning, and check it against how the network is actually configured rather than how it was designed three years ago.</p>
+</div>
+
+<h2>Shared logins</h2>
+
+<p>Schools run on shared credentials more than any other sector. A generic login on the classroom machine. A shared account for supply staff. An office login two people use. A library computer everybody signs into with the same password.</p>
+
+<p>Every one of those fails the access control requirement. Individual accounts for individual people is not a preference in the scheme, it is the requirement — and it is the change schools find most disruptive, because it touches daily habits rather than a configuration setting.</p>
+
+<p>It is also the control that matters most in a safeguarding context, since shared credentials make it impossible to establish who did what.</p>
+
+<h2>MFA on the MIS and everything else</h2>
+
+<p>Multi-factor authentication is mandatory on every cloud service that offers it, for all users, and missing it fails an assessment outright.</p>
+
+<p>For a school the in-scope list is long: the management information system, staff email, the finance system, the parent communications platform, the learning platform, cashless catering, the website content management system, HR and payroll, and the safeguarding recording system. Schools reliably enable MFA on email and miss two or three of the others.</p>
+
+<p>The safeguarding system deserves specific attention. It holds the most sensitive data in the building, and it is exactly the kind of specialist application where MFA gets overlooked because it was set up years ago by a supplier.</p>
+
+<h2>Devices past vendor support</h2>
+
+<p>Schools keep equipment a long time, often for good financial reasons. The problem is that unsupported operating systems cannot meet a fourteen-day patching requirement, because no patches are being issued — so they fail.</p>
+
+<p>The recurring culprits are older machines in specialist rooms, equipment attached to a particular piece of hardware or software that will not run on anything newer, interactive whiteboards and their controllers, and network equipment nobody has looked at since installation.</p>
+
+<p>Where replacement is not affordable this year, genuine network segregation is the alternative — but it has to be real separation, not a note in a policy.</p>
+
+<h2>People move constantly</h2>
+
+<p>Staff, supply teachers, governors, trainees, volunteers, contractors. Schools have more account churn than almost any comparable organisation, and account removal is rarely anyone's named job.</p>
+
+<p>An assessment asks how you know the account list is current. The answer needs to be a process — leavers removed as part of an offboarding routine, access reviewed periodically — rather than a belief that it is probably fine.</p>
+
+<h2>Multi-academy trusts</h2>
+
+<p>A certificate covers named legal entities, and for a trust the trust is normally the legal entity — so certification can cover the trust and its schools, provided the scope is described accurately and the controls genuinely hold across all of it.</p>
+
+<p>That last clause is the difficulty. Trusts formed by bringing schools together often inherit materially different systems, different suppliers and different local practice. Certifying the trust means every school in scope meets the standard, and the weakest one sets the pace. Establishing where that variation sits, before submitting, is the single most useful thing a trust can do.</p>
+
+<p>Note too that certificates now list every legal entity covered, so what the certificate actually says will be visible to anyone who reads it.</p>
+
+<h2>A sensible sequence for a school</h2>
+
+<ul>
+<li><strong>Inventory first</strong> — every device by type and operating system version, every cloud service, every category of user. In a school this is the bulk of the work.</li>
+<li><strong>Make the pupil device decision</strong> and write down the reasoning.</li>
+<li><strong>Check MFA across every system on the list</strong>, not just the obvious ones.</li>
+<li><strong>Find the unsupported devices</strong> and decide: replace, or genuinely segregate.</li>
+<li><strong>Deal with shared logins</strong> — the longest lead time, because it changes what people do daily.</li>
+<li><strong>Establish the leaver process</strong> and be able to describe it.</li>
+</ul>
+
+<p>Schools that start this in the summer term for an autumn assessment find it manageable. Schools that start three weeks before an insurance renewal do not.</p>
+
+<div class="cta">
+  <div class="t">PassCyber</div>
+  <h2>Scoping a school properly takes a conversation</h2>
+  <p>Pupil devices, a trust's mixed estate, and specialist systems that predate everyone currently working there — none of that fits a standard questionnaire. Tell us how the school actually runs and we will tell you what your scope should be and what it would take.</p>
+  <p><a href="/check">Take the free readiness check</a> &nbsp;·&nbsp; <a href="mailto:hello@passcyber.co.uk?subject=Cyber%20Essentials%20for%20our%20school">hello@passcyber.co.uk</a></p>
+  <p class="sig">PassCyber is a trading name of Edwards Bros (Spaldwick) Ltd</p>
+</div>
+
+<p style="font-size:14px;color:var(--steel)">Scheme requirements are set by the NCSC and IASME and are reviewed periodically. Department for Education standards for schools and colleges are published separately and updated from time to time — check the current version alongside the current Cyber Essentials requirements.</p>
+
+</div>
+</div>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fb">PassCyber</div>
+    <p>Cyber Essentials certification support for small organisations.</p>
+    <p>PassCyber is a trading name of Edwards Bros (Spaldwick) Ltd, registered in England &amp; Wales no. 00598511, registered office Fenland House, 15b Hostmoor Avenue, March, Cambridgeshire PE15 0AX. ICO registration ZA900683. Certificates are awarded by a certification body accredited by IASME, not by PassCyber.</p>
+    <p><a href="/privacy">Privacy notice</a> · <a href="/guides/">Guides</a> · <a href="/">Home</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
