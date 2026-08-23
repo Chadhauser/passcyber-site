@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://passcyber.co.uk/sitemap.xml
