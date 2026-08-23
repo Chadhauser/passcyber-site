@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PassCyber — Cyber Essentials, done for you. Guaranteed pass.</title>
-<meta name="description" content="Cyber Essentials certification without the jargon. We prepare and manage your whole submission and guarantee a pass — or we fix it and resubmit free. Fixed fee. Check your readiness in two minutes.">
+<title>PassCyber — Cyber Essentials done for you, or we fix and resubmit free</title>
+<meta name="description" content="Cyber Essentials certification without the jargon. We prepare and manage your whole submission, and if it does not pass we fix it and resubmit at no extra charge. Fixed fee. Check your readiness in two minutes.">
 <link rel="canonical" href="https://passcyber.co.uk/">
-<meta property="og:title" content="PassCyber — Cyber Essentials, done for you. Guaranteed pass.">
-<meta property="og:description" content="We do 95% of the work and guarantee your Cyber Essentials pass. Check your readiness free in two minutes.">
+<meta property="og:title" content="PassCyber — Cyber Essentials done for you, or we fix and resubmit free">
+<meta property="og:description" content="We prepare and manage your Cyber Essentials submission. If it does not pass, we fix it and resubmit free. Check your readiness in two minutes.">
 <meta property="og:url" content="https://passcyber.co.uk/">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,23 +19,17 @@
     --paper:#eef1ee;
     --card:#ffffff;
     --go:#12795a;
-    --go-deep:#0d5a43;
-    --warn:#b07515;
-    --fail:#a1341f;
+    --go-deep:#0d5f47;
     --line:#c9d2cd;
     --steel:#566862;
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+  *{margin:0;padding:0;box-sizing:border-box}
   body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1000px;margin:0 auto;padding:0 26px}
-  a{color:var(--go)}
-  a:focus-visible,button:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
 
   header{border-bottom:1px solid var(--line);background:var(--paper)}
-  .top{display:flex;align-items:center;justify-content:space-between;padding:16px 26px;max-width:1000px;margin:0 auto}
-  .brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:21px;letter-spacing:-.01em}
+  .top{max-width:1040px;margin:0 auto;padding:18px 24px;display:flex;justify-content:space-between;align-items:center}
+  .brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;letter-spacing:-.01em}
   .brand b{color:var(--go)}
   .top nav a{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--steel)}
   .top nav a:hover{color:var(--go)}
@@ -51,9 +45,16 @@
   .btn-line{border:1.5px solid var(--ink);color:var(--ink)}
   .btn-line:hover{background:var(--ink);color:var(--paper)}
 
-  .stamp{margin:54px 0 10px;display:flex;justify-content:center}
+  .stamp{margin:44px 0 10px;display:flex;justify-content:center}
+  .hero .wrap{display:grid;gap:8px;align-items:center}
+  @media(min-width:900px){
+    .hero .wrap{grid-template-columns:1fr minmax(380px,44%);gap:56px;align-items:center}
+    .hero__text{min-width:0}
+    .stamp{margin:0}
+    h1{max-width:14ch}
+  }
   .cert{width:100%;max-width:560px;background:var(--card);border:1px solid var(--ink);border-radius:3px;padding:26px 28px;position:relative}
-  .cert::before{content:'SPECIMEN';position:absolute;top:14px;right:18px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.3em;color:var(--line)}
+  .cert::before{content:'SPECIMEN';position:absolute;top:14px;right:18px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.3em;color:var(--steel);font-weight:500}
   .cert h3{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:14px}
   .cert .verdict{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;color:var(--go);display:flex;align-items:center;gap:12px}
   .cert .tick{width:34px;height:34px;border-radius:50%;background:var(--go);color:#fff;display:grid;place-items:center;font-size:18px}
@@ -64,11 +65,12 @@
   .strip{background:var(--ink);color:var(--paper);padding:20px 0}
   .strip .wrap{display:flex;flex-wrap:wrap;gap:12px 36px;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.03em}
   .strip span{display:flex;align-items:center;gap:8px}
-  .strip .d{width:5px;height:5px;border-radius:50%;background:var(--go)}
+  .strip .d{width:5px;height:5px;border-radius:50%;background:var(--go);flex:0 0 auto}
 
   section{padding:66px 0;border-top:1px solid var(--line)}
   .lbl{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--go);margin-bottom:14px}
-  h2{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(24px,4vw,32px);letter-spacing:-.01em;max-width:22ch}
+  h2{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(24px,4vw,32px);line-height:1.12;letter-spacing:-.01em;max-width:22ch}
+  h3{line-height:1.15}
   section p{max-width:60ch;color:var(--steel);margin-top:12px}
 
   .grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:34px}
@@ -76,14 +78,14 @@
   @media(max-width:480px){.grid5{grid-template-columns:1fr}}
   .ctrl{background:var(--card);padding:22px 18px}
   .ctrl .n{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--go);font-weight:500}
-  .ctrl h4{font-family:'Space Grotesk',sans-serif;font-size:15.5px;font-weight:600;margin:8px 0 6px}
+  .ctrl h4{font-family:'Space Grotesk',sans-serif;font-size:15.5px;font-weight:600;margin:8px 0 6px;line-height:1.2}
   .ctrl p{font-size:13.5px;color:var(--steel);margin:0}
 
   .offer{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start}
   @media(max-width:820px){.offer{grid-template-columns:1fr;gap:26px}}
   .offer .body p{margin-bottom:14px;max-width:none}
   .price{background:var(--card);border:1px solid var(--ink);border-radius:3px;padding:26px}
-  .price .amt{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:34px}
+  .price .amt{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:34px;line-height:1.15}
   .price .amt small{font-size:15px;color:var(--steel);font-weight:400}
   .price ul{list-style:none;margin-top:16px;display:grid;gap:10px}
   .price li{display:flex;gap:10px;font-size:14.5px}
@@ -91,7 +93,7 @@
   .price .btn{margin-top:20px;width:100%;text-align:center}
 
   .guarantee{background:var(--go);color:#fff;border-radius:3px;padding:30px 28px;margin-top:34px}
-  .guarantee h3{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:8px}
+  .guarantee h3{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:8px;line-height:1.15}
   .guarantee p{color:rgba(255,255,255,.9);max-width:64ch}
 
   footer{background:var(--ink);color:rgba(238,241,238,.7);padding:44px 0 40px;font-size:13px;font-family:'Inter',sans-serif}
@@ -111,12 +113,14 @@
 
 <section class="hero" style="border-top:0">
   <div class="wrap">
+    <div class="hero__text">
     <div class="kicker">Cyber Essentials · done for you</div>
     <h1>Pass Cyber Essentials without the jargon.</h1>
-    <p>Your biggest customers, your insurer and every public tender are starting to ask for Cyber Essentials. We prepare and manage the whole thing for you — and guarantee a pass. You spend about twenty minutes; we do the rest.</p>
+    <p>Your biggest customers, your insurer and every public tender are starting to ask for Cyber Essentials. We prepare and manage the whole thing for you, and if your submission does not pass we fix what is needed and resubmit at no extra charge. You spend about twenty minutes; we do the rest.</p>
     <div class="cta">
       <a href="/check" class="btn btn-go">Check your readiness — free, 2 min</a>
       <a href="#offer" class="btn btn-line">See how it works</a>
+    </div>
     </div>
 
     <div class="stamp">
@@ -137,8 +141,8 @@
 
 <div class="strip">
   <div class="wrap">
-    <span><span class="d"></span> Guaranteed pass, or we fix &amp; resubmit free</span>
-    <span><span class="d"></span> We do about 95% of the work</span>
+    <span><span class="d"></span> If it doesn't pass, we fix &amp; resubmit free</span>
+    <span><span class="d"></span> About twenty minutes of your time</span>
     <span><span class="d"></span> Fixed fee, no surprises</span>
   </div>
 </div>
@@ -171,7 +175,7 @@
         <div class="amt">£500–800 <small>fixed fee</small></div>
         <ul>
           <li>Full submission prepared and reviewed for you</li>
-          <li>Guaranteed pass — or we fix and resubmit free</li>
+          <li>If it doesn't pass, we fix and resubmit free</li>
           <li>Plain-English guidance, no IT team needed</li>
           <li>Annual renewal handled</li>
         </ul>
@@ -181,7 +185,7 @@
 
     <div class="guarantee">
       <h3>The guarantee</h3>
-      <p>If your prepared submission doesn't pass, we fix what's needed and resubmit at no extra charge. We only take on work we're confident we can get across the line — which is exactly why the free readiness check comes first.</p>
+      <p>If your prepared submission doesn't pass, we fix what's needed and resubmit at no extra charge. We only take on work we're confident we can get across the line — which is exactly why the free readiness check comes first. The certificate itself is awarded by an accredited certification body, not by us.</p>
     </div>
   </div>
 </section>
@@ -190,7 +194,7 @@
   <div class="wrap">
     <div class="lbl">The two things that fail people</div>
     <h2>Most failures come down to two traps.</h2>
-    <p>Since April 2026, two things fail a Cyber Essentials submission outright — no matter how good everything else is. A cloud service (email, Microsoft, Google, accounting, banking) left without two-step login. And security updates not applied within 14 days. Our readiness check flags both before they cost you the certificate.</p>
+    <p>Under the current question set, two things fail a Cyber Essentials submission outright — no matter how good everything else is. A cloud service (email, Microsoft, Google, accounting, banking) left without two-step login. And security updates not applied within 14 days. Our readiness check flags both before they cost you the certificate.</p>
     <div class="cta">
       <a href="/check" class="btn btn-go">Check for the traps — free</a>
     </div>
@@ -200,9 +204,9 @@
 <footer>
   <div class="wrap">
     <div class="fb">PassCyber</div>
-    <p style="max-width:46ch">Cyber Essentials certification, done for you and guaranteed. Get the badge your customers, insurers and tenders are asking for — without the jargon.</p>
+    <p style="max-width:46ch">Cyber Essentials certification, prepared and managed for you. Get the badge your customers, insurers and tenders are asking for — without the jargon.</p>
     <p style="margin-top:14px">hello@passcyber.co.uk</p>
-    <p class="legal">PassCyber is a trading name of a UK registered limited company. Cyber Essentials is a certification scheme owned by the National Cyber Security Centre and delivered by IASME; PassCyber prepares and manages submissions on behalf of its clients and is not affiliated with the NCSC or IASME. © 2026.</p>
+    <p class="legal">PassCyber is a trading name of Edwards Bros (Spaldwick) Ltd, registered in England and Wales, company number 00598511. Registered office: Fenland House, 15b Hostmoor Avenue, March, Cambridgeshire PE15 0AX. ICO registration ZA900683. <a href="/privacy">Privacy notice</a>. Cyber Essentials is a certification scheme owned by the National Cyber Security Centre and delivered by IASME; PassCyber prepares and manages submissions on behalf of its clients and is not affiliated with the NCSC or IASME. © 2026.</p>
   </div>
 </footer>
 
