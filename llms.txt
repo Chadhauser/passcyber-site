@@ -1,0 +1,28 @@
+# PassCyber
+
+> Cyber Essentials certification support for small UK organisations. We prepare and manage the whole submission, and if it does not pass we fix it and resubmit at no extra charge. PassCyber is a trading name of Edwards Bros (Spaldwick) Ltd, a family company trading since 1955, based in Cambridgeshire.
+
+Cyber Essentials is a UK government-backed certification scheme owned by the National Cyber Security Centre (NCSC) and delivered by IASME. It covers five technical controls: firewalls, secure configuration, security update management, user access control, and malware protection. Certificates are awarded by IASME-accredited certification bodies, not by PassCyber.
+
+The current question set is Danzell, accompanying version 3.3 of the Requirements for IT Infrastructure. Two answers now fail an assessment outright: multi-factor authentication missing on a cloud service that offers it, and high-risk or critical security updates not applied within 14 days.
+
+## Guides
+
+- [Why Cyber Essentials applications fail](https://passcyber.co.uk/guides/why-cyber-essentials-applications-fail.html): The two automatic failures under the Danzell question set, plus unsupported software, scoping errors, shared logins, default credentials and inconsistent answers.
+- [Cyber Essentials or Cyber Essentials Plus?](https://passcyber.co.uk/guides/cyber-essentials-vs-plus.html): The difference between self-assessment and the independent technical audit, the tighter sampling rules that closed previous workarounds, who actually requires Plus, and how to plan backwards from a contract date.
+- [The details that bounce an application](https://passcyber.co.uk/guides/cyber-essentials-application-details.html): Registered company name, registered office address, group entities, scope description and the director declaration — the administrative gate before the security answers are assessed.
+- [Are personal phones and home laptops in scope?](https://passcyber.co.uk/guides/cyber-essentials-scope-personal-devices.html): How Cyber Essentials scope follows the data rather than device ownership, what BYOD means for the assessment, the three legitimate ways to narrow scope, and why cloud services can never be excluded.
+
+## Tools
+
+- [Free Cyber Essentials readiness check](https://passcyber.co.uk/check): A short self-check against the current requirements. No sign-up needed to see the result.
+
+## Service
+
+- [PassCyber homepage](https://passcyber.co.uk/): Fixed-fee Cyber Essentials preparation and management, including annual renewal.
+
+## About
+
+- [Privacy notice](https://passcyber.co.uk/privacy): How PassCyber handles personal data. ICO registration ZA900683.
+
+Contact: hello@passcyber.co.uk
