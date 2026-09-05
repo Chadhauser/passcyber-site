@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cyber Essentials MFA rules: the auto-fail explained (v3.3)</title>
+<meta name="description" content="Since April 2026, missing MFA on any cloud service that offers it automatically fails your whole Cyber Essentials assessment — free tier or paid. What counts as a cloud service, the second auto-fail (14-day patching), and the platform-by-platform fix list.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://passcyber.co.uk/guides/cyber-essentials-mfa-requirements">
+<meta name="theme-color" content="#132420">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="PassCyber">
+<meta property="og:title" content="Cyber Essentials MFA: the auto-fail rule explained">
+<meta property="og:description" content="No MFA where a cloud service offers it = automatic fail since April 2026. What's in scope, the 14-day patching twin rule, and the fix list.">
+<meta property="og:url" content="https://passcyber.co.uk/guides/cyber-essentials-mfa-requirements">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/guide.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Cyber Essentials MFA: the auto-fail rule explained (v3.3)","description":"No MFA where a cloud service offers it = automatic fail since April 2026. What's in scope, the 14-day patching twin rule, and the fix list.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en-GB","mainEntityOfPage":{"@type":"WebPage","@id":"https://passcyber.co.uk/guides/cyber-essentials-mfa-requirements"},"author":{"@type":"Person","name":"Peter Edwards"},"publisher":{"@type":"Organization","name":"PassCyber","url":"https://passcyber.co.uk"}}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="/">Pass<b>Cyber</b></a>
+    <nav>
+      <a href="/guides/">Guides</a>
+      <a href="/check">Readiness Check</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div class="wrap">
+<div class="doc">
+  <span class="crumb"><a href="/">PassCyber</a> / <a href="/guides/">Guides</a></span>
+  <h1>The Cyber Essentials MFA rule: one missing setting now fails your whole assessment</h1>
+  <p class="stand">Since 27 April 2026 (requirements v3.3), the rule is blunt: if a cloud service you use offers multi-factor authentication and you haven't turned it on, your Cyber Essentials assessment <strong>automatically fails</strong>. Not marked down — failed. It doesn't matter whether MFA is free, bundled, or a paid add-on. Here's exactly what's in scope, the second auto-fail hiding beside it, and the platform-by-platform fix list.</p>
+  <div class="meta"><span>Reading time 5 minutes</span><span>Applies to first assessments and every renewal</span></div>
+
+<div class="prose">
+
+<h2>The rule in one paragraph</h2>
+<p>Every cloud service within your assessment scope must have MFA enabled for all users — admins and standard users alike — wherever the service supports it. “Supports it” is read harshly: free feature, licence upgrade, connected identity provider — if MFA <em>can</em> be enabled, it <em>must</em> be. One service without it, answered honestly, fails the assessment outright under the v3.3 marking rules. There is no discretion and no appeal on this point.</p>
+
+<h2>“But what counts as a cloud service?” — the question that catches everyone</h2>
+<p>More than most organisations think. If your people sign into it over the internet and it holds or touches organisational data, it's in the frame: Microsoft 365 and Google Workspace, obviously — but also your accounting software, CRM, payroll portal, project tools, file storage, e-signature service, website admin, booking systems and remote-access tools. Two traps in particular:</p>
+<ul>
+<li><strong>Shadow IT:</strong> the Dropbox someone set up in 2019, the Trello board with client names in it — informally adopted services are still services. Scope follows the data (our <a href="/guides/cyber-essentials-scope-personal-devices.html">scope guide</a> covers the device side of the same logic).</li>
+<li><strong>Personal accounts touching work data:</strong> a personal Gmail receiving company files brings the arrangement into scope-conversation territory — the clean fix is proper organisational accounts, not clever answers.</li>
+</ul>
+
+<h2>The twin auto-fail nobody talks about: 14-day patching</h2>
+<p>v3.3 added a second automatic fail alongside MFA: <strong>high-risk and critical security updates must be installed within 14 days of release</strong> — across operating systems, applications, browser extensions, and (the one everyone forgets) <strong>router and firewall firmware</strong>. Answer “no” to either patching question and the assessment fails just as hard as missing MFA. For a small organisation the honest route is automatic updates everywhere they exist, plus a monthly calendar habit for the kit that can't auto-update — the router being the usual orphan.</p>
+
+<h2>The fix list, platform by platform</h2>
+<ul>
+<li><strong>Microsoft 365:</strong> turn on Security Defaults (Entra admin centre) or, on business plans, Conditional Access requiring MFA for all users. Check for legacy protocols still allowing basic auth.</li>
+<li><strong>Google Workspace:</strong> Admin console → enforce 2-Step Verification for all organisational units, with a sensible enrolment window.</li>
+<li><strong>Accounting software (Xero, QuickBooks, Sage, FreeAgent):</strong> all offer MFA — Xero already mandates it; enable and enforce for every user, including your accountant's logins.</li>
+<li><strong>Everything else:</strong> inventory first — list every service anyone signs into for work, check each for an MFA setting, enable it, and record the handful that genuinely don't offer it (those you document rather than fail on).</li>
+<li><strong>Method:</strong> authenticator apps or passkeys beat SMS where the choice exists — v3.3 explicitly smiles on passwordless sign-in.</li>
+</ul>
+
+<div class="flag">
+  <div class="t">Renewing this year? Read this twice</div>
+  <p>Certificates issued under the old rules renew against the new ones — the standard moved underneath you. Industry estimates put tens of thousands of existing certificate holders at risk of failing renewal on MFA alone. If your assessment account was created before 27 April 2026 you had a six-month window under the old question set — <strong>that window closes in late October 2026</strong>; after it, v3.3 applies to everyone, no exceptions.</p>
+</div>
+
+<h2>Do the five-minute check before the assessor does</h2>
+<p>List your cloud services, mark MFA yes/no on each, and check updates are set to automatic — that's most of the two auto-fails dealt with in an afternoon. Our free <a href="/check">readiness check</a> walks the whole question set the same way and shows what would currently fail; and if the fixing itself is the obstacle — nobody in the building owns “IT” — that gap is exactly what our fixed-price, done-for-you support exists to close.</p>
+
+<div class="cta">
+  <div class="t">PassCyber</div>
+  <h2>Would you pass the two auto-fails today?</h2>
+  <p>Five minutes, no sign-up: the <a href="/check">readiness check</a> tells you what fails before you've spent a pound — including the MFA and patching questions that now decide everything.</p>
+  <p><a href="/check">Take the readiness check</a> &nbsp;·&nbsp; <a href="mailto:hello@passcyber.co.uk?subject=MFA%20question">hello@passcyber.co.uk</a></p>
+  <p class="sig">PassCyber is a trading name of Edwards Bros (Spaldwick) Ltd</p>
+</div>
+
+</div>
+</div>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fb">PassCyber</div>
+    <p>Cyber Essentials certification support for small organisations.</p>
+    <p>PassCyber is a trading name of Edwards Bros (Spaldwick) Ltd, registered in England &amp; Wales no. 00598511, registered office Fenland House, 15b Hostmoor Avenue, March, Cambridgeshire PE15 0AX. ICO registration ZA900683. Certificates are awarded by a certification body accredited by IASME, not by PassCyber.</p>
+    <p><a href="/privacy">Privacy notice</a> · <a href="/guides/">Guides</a> · <a href="/">Home</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
