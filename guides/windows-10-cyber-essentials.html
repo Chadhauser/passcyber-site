@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Windows 10 fails Cyber Essentials — your options in 2026</title>
+<meta name="description" content="Windows 10 support ended in October 2025 — so machines still running it fail Cyber Essentials' supported-software requirement. What Extended Security Updates do and don't fix, how to check your fleet in ten minutes, and the upgrade-or-replace decision done honestly.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://passcyber.co.uk/guides/windows-10-cyber-essentials">
+<meta name="theme-color" content="#132420">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="PassCyber">
+<meta property="og:title" content="Windows 10 fails Cyber Essentials — your options">
+<meta property="og:description" content="Out of support = out of certification. What ESU buys you, what fails regardless, and the ten-minute fleet check.">
+<meta property="og:url" content="https://passcyber.co.uk/guides/windows-10-cyber-essentials">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/guide.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Windows 10 fails Cyber Essentials — your options in 2026","description":"Out of support = out of certification. What ESU buys you, what fails regardless, and the ten-minute fleet check.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en-GB","mainEntityOfPage":{"@type":"WebPage","@id":"https://passcyber.co.uk/guides/windows-10-cyber-essentials"},"author":{"@type":"Person","name":"Peter Edwards"},"publisher":{"@type":"Organization","name":"PassCyber","url":"https://passcyber.co.uk"}}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="/">Pass<b>Cyber</b></a>
+    <nav>
+      <a href="/guides/">Guides</a>
+      <a href="/check">Readiness Check</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div class="wrap">
+<div class="doc">
+  <span class="crumb"><a href="/">PassCyber</a> / <a href="/guides/">Guides</a></span>
+  <h1>Still on Windows 10? That's a Cyber Essentials fail now — here are your real options</h1>
+  <p class="stand">Windows 10 left mainstream support on 14 October 2025. Cyber Essentials requires every in-scope device to run <strong>supported</strong> software receiving security updates — so a Windows 10 machine without an Extended Security Updates arrangement doesn't get marked down, it takes the whole assessment down with it. The quiet part: most small organisations with a couple of older laptops in a cupboard have no idea this is their failure point. Ten minutes of checking fixes the surprise; here's the honest decision tree.</p>
+  <div class="meta"><span>Reading time 4 minutes</span><span>Applies to first assessments and renewals</span></div>
+
+<div class="prose">
+
+<h2>Why “it still works fine” doesn't help you</h2>
+<p>Cyber Essentials' logic is about updates, not usability: unsupported operating systems stop receiving security patches, so every newly discovered flaw stays open forever. The requirement is that all in-scope devices run vendor-supported software — and the v3.3 rules pair this with the <a href="/guides/cyber-essentials-mfa-requirements.html">14-day patching auto-fail</a>: you can't patch within 14 days on a system that no longer receives patches at all. A single forgotten Windows 10 laptop that still touches company email or files is in scope, and it fails you.</p>
+
+<h2>The ten-minute fleet check</h2>
+<ul>
+<li>List every computer that touches organisational data — including home machines used for work and the “spare” under the spare desk (<a href="/guides/cyber-essentials-scope-personal-devices.html">scope follows the data</a>).</li>
+<li>On each: Settings → System → About. Windows 11 → fine. Windows 10 → note it. Anything older → it should not be touching work data at all.</li>
+<li>Check Windows 11 eligibility on the Windows 10 machines (Microsoft's PC Health Check tool): many 2018+ machines upgrade free; many older ones can't because of hardware requirements (TPM 2.0).</li>
+</ul>
+
+<h2>Your four options, honestly compared</h2>
+<h3>1. Free upgrade to Windows 11 (eligible hardware)</h3>
+<p>Cost: nothing but time. If PC Health Check passes, upgrade, verify updates flow, done — the answer for most machines bought since ~2019.</p>
+<h3>2. Extended Security Updates (ESU) — the paid stay of execution</h3>
+<p>Microsoft sells ESU for Windows 10, delivering security patches beyond end-of-support (business pricing starts around £45–£50 per device for year one and <strong>doubles each year</strong>, by design). A device covered by ESU is still receiving vendor security updates, which keeps it defensible for certification during the ESU window — but declare it honestly in the assessment, keep the enrolment evidence, and treat ESU as a bridge to replacement, not a destination: the economics are built to push you off it.</p>
+<h3>3. Replace the machine</h3>
+<p>A capable business laptop costs £400–£600. Against three years of doubling ESU fees plus the risk profile of ageing kit, replacement is usually the cheaper answer by year two — and the only one that also fixes the TPM/BitLocker and performance story.</p>
+<h3>4. Take it out of scope — properly</h3>
+<p>A Windows 10 machine that genuinely never touches organisational data, on a segregated network, can sit outside scope (the workshop PC running a lathe). “We mostly don't use it” is not segregation — assessors read this one carefully, and so do we.</p>
+
+<div class="flag">
+  <div class="t">The renewal trap</div>
+  <p>Certified in early 2025 with Windows 10 machines? You passed under rules and support dates that no longer apply — renewal is assessed against today's standard, and unsupported OS plus the v3.3 auto-fails is the single most common way a previously certified small organisation fails its second year. Our <a href="/guides/cyber-essentials-renewal.html">renewal guide</a> covers the rest of what drifts.</p>
+</div>
+
+<h2>The order to do things</h2>
+<p>Inventory → free upgrades first → replace-or-ESU decision per remaining machine (with the doubling cost in front of you) → genuine segregation for anything staying out of scope → then certify. If the inventory itself is the obstacle, the <a href="/check">readiness check</a> walks you through it in minutes — and the done-for-you service exists for exactly the organisation whose “IT department” is whoever's least afraid of the router.</p>
+
+<div class="cta">
+  <div class="t">PassCyber</div>
+  <h2>Find the machine that would fail you — before the assessor does</h2>
+  <p>Five minutes, no sign-up: the <a href="/check">readiness check</a> covers supported software, the MFA rule and the patching windows — the three places assessments now die.</p>
+  <p><a href="/check">Take the readiness check</a> &nbsp;·&nbsp; <a href="mailto:hello@passcyber.co.uk?subject=Windows%2010%20question">hello@passcyber.co.uk</a></p>
+  <p class="sig">PassCyber is a trading name of Edwards Bros (Spaldwick) Ltd</p>
+</div>
+
+</div>
+</div>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fb">PassCyber</div>
+    <p>Cyber Essentials certification support for small organisations.</p>
+    <p>PassCyber is a trading name of Edwards Bros (Spaldwick) Ltd, registered in England &amp; Wales no. 00598511, registered office Fenland House, 15b Hostmoor Avenue, March, Cambridgeshire PE15 0AX. ICO registration ZA900683. Certificates are awarded by a certification body accredited by IASME, not by PassCyber.</p>
+    <p><a href="/privacy">Privacy notice</a> · <a href="/guides/">Guides</a> · <a href="/">Home</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
