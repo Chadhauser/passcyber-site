@@ -77,6 +77,9 @@
   .capture{margin-top:30px;border-top:1px solid var(--line);padding-top:26px}
   .capture h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:21px;margin-bottom:8px}
   .capture p{color:var(--steel);font-size:14.5px;margin-bottom:18px;max-width:52ch}
+  .capform{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+  .capform input[type=email]{flex:1;min-width:230px;padding:13px 15px;font-size:15px;font-family:inherit;border:1.5px solid var(--ink);border-radius:2px;background:var(--card)}
+  .capok{display:none;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--go-deep);margin-bottom:14px}
   .caprow{display:flex;gap:12px;flex-wrap:wrap}
   .fineprint{margin-top:16px;font-size:12px;color:var(--steel)}
 
@@ -121,11 +124,16 @@
   <div class="capture">
     <h3 id="caphead"></h3>
     <p id="capbody"></p>
+    <form class="capform" id="capform" novalidate>
+      <input type="email" id="capemail" placeholder="you@business.co.uk" required aria-label="Email address">
+      <button type="submit" class="btn btn-go">Send me my fix list</button>
+    </form>
+    <div class="capok" id="capok">Done — your result is with us. We'll reply with your specific fix list, usually the same working day.</div>
     <div class="caprow">
-      <a class="btn btn-go" id="emailbtn" href="#">Send my result to PassCyber</a>
+      <a id="emailbtn" href="#">Prefer email? Send your result from your own inbox</a>
       <button class="btn btn-line" onclick="restart()">Start again</button>
     </div>
-    <p class="fineprint">Indicative only — a readiness view, not a certification decision. The formal assessment uses the full IASME question set.</p>
+    <p class="fineprint">Indicative only — a readiness view, not a certification decision. The formal assessment uses the full IASME question set. We use your email to reply about your result and nothing else.</p>
   </div>
 </section>
 
@@ -164,10 +172,11 @@ const Q = [
 const CONTROLS = ["Firewalls","Secure configuration","User access control","Malware protection","Security update management"];
 
 let i=0; const ans=new Array(Q.length).fill(null);
+let lastResult=null;
 
 function show(id){['intro','quiz','report'].forEach(s=>{document.getElementById(s).classList.remove('active');document.getElementById(s).style.display=(s===id?'':'none')});document.getElementById(id).classList.add('active');window.scrollTo({top:0});}
 function start(){i=0;render();show('quiz');}
-function restart(){ans.fill(null);document.getElementById('intro').style.display='';['quiz','report'].forEach(s=>document.getElementById(s).classList.remove('active'));window.scrollTo({top:0});}
+function restart(){ans.fill(null);document.getElementById('intro').style.display='';['quiz','report'].forEach(s=>document.getElementById(s).classList.remove('active'));document.getElementById('capform').style.display='flex';document.getElementById('capok').style.display='none';window.scrollTo({top:0});}
 
 function render(){
   const q=Q[i];
@@ -222,9 +231,11 @@ function finish(){
   document.getElementById('rdate').textContent=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
 
   const H=document.getElementById('caphead'), B=document.getElementById('capbody');
-  if(band==='ready'){H.textContent='Get it over the line';B.textContent='You\u2019re close. Send your result across and we\u2019ll prepare and manage the full submission for you — guaranteed pass, fixed fee. Most of the work is ours.';}
-  else if(band==='close'){H.textContent='Let\u2019s close the gaps';B.textContent='A few specific fixes stand between you and the badge. Send your result over and we\u2019ll tell you exactly what to change — or do the whole thing for you, guaranteed.';}
-  else{H.textContent='These are fixable — fast';B.textContent='The critical items are usually the quickest to fix. Send your result across and we\u2019ll sort them and manage your whole submission to a guaranteed pass.';}
+  if(band==='ready'){H.textContent='Get it over the line';B.textContent='You\u2019re close. Pop your email in and we\u2019ll reply with exactly what a clean submission needs — or manage the whole thing for you: guaranteed pass, fixed fee.';}
+  else if(band==='close'){H.textContent='Let\u2019s close the gaps';B.textContent='A few specific fixes stand between you and the badge. Pop your email in and we\u2019ll send your exact fix list — or do the whole thing for you, guaranteed.';}
+  else{H.textContent='These are fixable — fast';B.textContent='The critical items are usually the quickest to fix. Pop your email in and we\u2019ll send your specific fix list and how we\u2019d get you to a guaranteed pass.';}
+
+  lastResult={total:total,band:band,mfa:mfaFail,patch:patchFail};
 
   const lines = CONTROLS.map(c=>{const pc=perControl[c];const pct=pc.max?Math.round(pc.got/pc.max*100):0;return c+': '+pct+'%';}).join('%0D%0A');
   const traps = (mfaFail?'MFA trap flagged. ':'')+(patchFail?'14-day update trap flagged.':'')||'No critical traps.';
@@ -234,6 +245,28 @@ function finish(){
 
   show('report');
 }
+
+document.getElementById('capform').addEventListener('submit',async function(e){
+  e.preventDefault();
+  var em=document.getElementById('capemail').value.trim();
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)||!lastResult)return;
+  var src='passcyber-check|'+lastResult.total+'|'+lastResult.band+(lastResult.mfa?'|mfa':'')+(lastResult.patch?'|patch':'');
+  try{
+    await fetch('https://pesgnqmohcawmpcmsupl.supabase.co/rest/v1/funnel_signups',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'Content-Profile':'sheetmtd',
+        'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlc2ducW1vaGNhd21wY21zdXBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzMjE4OTAsImV4cCI6MjA5Mzg5Nzg5MH0.NQv6-XMYj5bTJKeohcZ58-KdDS2JNQlPP4N9ywxbvIs',
+        'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlc2ducW1vaGNhd21wY21zdXBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzMjE4OTAsImV4cCI6MjA5Mzg5Nzg5MH0.NQv6-XMYj5bTJKeohcZ58-KdDS2JNQlPP4N9ywxbvIs',
+        'Prefer':'return=minimal'
+      },
+      body:JSON.stringify({email:em.toLowerCase(),source:src})
+    });
+  }catch(err){}
+  document.getElementById('capform').style.display='none';
+  document.getElementById('capok').style.display='block';
+});
 </script>
 </body>
 </html>
