@@ -19,7 +19,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/guide.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Free cyber security policy template for small businesses (UK)","description":"Plain-English policy template aligned to the five Cyber Essentials controls.","datePublished":"2026-08-30","dateModified":"2026-08-30","inLanguage":"en-GB","mainEntityOfPage":{"@type":"WebPage","@id":"https://passcyber.co.uk/guides/cyber-security-policy-template"},"author":{"@type":"Person","name":"Peter Edwards"},"publisher":{"@type":"Organization","name":"PassCyber","url":"https://passcyber.co.uk"}}</script>
+<style>
+.capture{background:var(--card,#fff);border:1.5px solid var(--ink,#132420);border-radius:12px;padding:26px 28px;margin:26px 0}
+.capture h3{margin:0 0 6px;font-size:20px}
+.capture p.small{font-size:14px;opacity:.8;margin:0 0 14px}
+.capture form{display:flex;gap:10px;flex-wrap:wrap}
+.capture input[type=email]{flex:1;min-width:230px;padding:13px 15px;font-size:15px;border:1.5px solid var(--ink,#132420);border-radius:8px}
+.capture button{padding:13px 20px;font-weight:600;font-size:15px;color:#fff;background:var(--ink,#132420);border:0;border-radius:8px;cursor:pointer}
+.capture button:hover{opacity:.9}
+.capture .ok-msg{display:none;font-weight:600;color:#1E7B4F;margin-top:10px}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Free cyber security policy template for small businesses (UK)","description":"Plain-English policy template aligned to the five Cyber Essentials controls.","datePublished":"2026-08-30","dateModified":"2026-09-06","inLanguage":"en-GB","mainEntityOfPage":{"@type":"WebPage","@id":"https://passcyber.co.uk/guides/cyber-security-policy-template"},"author":{"@type":"Person","name":"Peter Edwards"},"publisher":{"@type":"Organization","name":"PassCyber","url":"https://passcyber.co.uk"}}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -46,6 +56,16 @@
 
 <h2>Before you copy it — two honest notes</h2>
 <p>First: a policy nobody follows is worse than no policy, because it documents what you claimed and didn't do. Keep it short enough to be true. Second: this template is a strong general-purpose starting point, not legal advice or a guarantee of certification — adapt it to how your organisation actually works, and review it annually or when anything material changes.</p>
+
+<div class="capture">
+  <h3>Get the Word version, free</h3>
+  <p class="small">The same template as a ready-to-edit .docx, sent to your inbox — plus one short follow-up asking about your setup, so we can point out the sections an assessor would query. No charge, no spam, unsubscribe with a word.</p>
+  <form id="tplform" novalidate>
+    <input type="email" id="tplemail" placeholder="you@organisation.co.uk" required aria-label="Email address">
+    <button type="submit">Email me the template</button>
+  </form>
+  <div class="ok-msg" id="tplok">Done — the template's on its way to your inbox.</div>
+</div>
 
 <h2>The template</h2>
 
@@ -77,9 +97,6 @@
   <p>Sections 3–7 are the five Cyber Essentials control areas in policy form. Adopt this and you haven't just written a document — you've committed to the exact controls the certification assesses, which makes <a href="/guides/how-to-get-cyber-essentials.html">certifying</a> a formality rather than a scramble.</p>
 </div>
 
-<h2>Want it as a document, tailored?</h2>
-<p>Email us and we'll send the template as a Word file — and if you tell us a little about your setup, we'll mark up the sections that need attention before an assessor would see them. No charge for either.</p>
-
 <div class="cta">
   <div class="t">PassCyber</div>
   <h2>Policy is the paperwork — the readiness check tests the reality</h2>
@@ -102,5 +119,27 @@
   </div>
 </footer>
 
+<script>
+document.getElementById('tplform').addEventListener('submit',async function(e){
+  e.preventDefault();
+  var em=document.getElementById('tplemail').value.trim();
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em))return;
+  try{
+    await fetch('https://pesgnqmohcawmpcmsupl.supabase.co/rest/v1/funnel_signups',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'Content-Profile':'sheetmtd',
+        'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlc2ducW1vaGNhd21wY21zdXBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzMjE4OTAsImV4cCI6MjA5Mzg5Nzg5MH0.NQv6-XMYj5bTJKeohcZ58-KdDS2JNQlPP4N9ywxbvIs',
+        'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlc2ducW1vaGNhd21wY21zdXBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzMjE4OTAsImV4cCI6MjA5Mzg5Nzg5MH0.NQv6-XMYj5bTJKeohcZ58-KdDS2JNQlPP4N9ywxbvIs',
+        'Prefer':'return=minimal'
+      },
+      body:JSON.stringify({email:em.toLowerCase(),source:'passcyber-template'})
+    });
+  }catch(err){}
+  document.getElementById('tplform').style.display='none';
+  document.getElementById('tplok').style.display='block';
+});
+</script>
 </body>
 </html>
