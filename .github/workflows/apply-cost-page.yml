@@ -1,0 +1,21 @@
+name: Strengthen cost page (one-off)
+on:
+  push:
+    branches: [main]
+    paths: ['tools/cost_page.py']
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply, remove tooling, commit
+        run: |
+          python3 tools/cost_page.py
+          git rm -q -r tools .github/workflows/apply-cost-page.yml
+          git config user.name "seo-bot"
+          git config user.email "seo-bot@users.noreply.github.com"
+          git add -A
+          git commit -m "Cost guide: 2026 title, direct-answer block, three worked totals, dateModified"
+          git push
