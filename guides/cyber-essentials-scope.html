@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cyber Essentials scope: what’s in, what’s out, and why &quot;whole organisation&quot; is almost always right | PassCyber</title>
+<meta name="description" content="Cyber Essentials scope covers every device and account that can reach business data or the business network — home laptops and personal phones included. What is in, what is out, whole organisation versus a sub-set, and how to write the scope so the application isn’t bounced.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://passcyber.co.uk/guides/cyber-essentials-scope">
+<meta name="theme-color" content="#132420">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="PassCyber">
+<meta property="og:title" content="Cyber Essentials scope: what’s in, what’s out, and why &quot;whole organisation&quot; is almost always right">
+<meta property="og:description" content="Cyber Essentials scope covers every device and account that can reach business data or the business network — home laptops and personal phones included. What is in, what is out, whole organisation versus a sub-set, and how to write the scope so the application isn’t bounced.">
+<meta property="og:url" content="https://passcyber.co.uk/guides/cyber-essentials-scope">
+<meta property="og:locale" content="en_GB">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/guide.css">
+<style>
+.capture{background:var(--card,#fff);border:1.5px solid var(--ink,#132420);border-radius:12px;padding:26px 28px;margin:26px 0}
+.capture h3{margin:0 0 6px;font-size:20px}
+.capture p.small{font-size:14px;opacity:.8;margin:0 0 14px}
+.capture form{display:flex;gap:10px;flex-wrap:wrap}
+.capture input[type=email]{flex:1;min-width:230px;padding:13px 15px;font-size:15px;border:1.5px solid var(--ink,#132420);border-radius:8px}
+.capture button{padding:13px 20px;font-weight:600;font-size:15px;color:#fff;background:var(--ink,#132420);border:0;border-radius:8px;cursor:pointer}
+.capture button:hover{opacity:.9}
+.capture .ok-msg{display:none;font-weight:600;color:#1E7B4F;margin-top:10px}
+.related{margin:40px 0 8px;padding:22px 24px;border:1px solid rgba(0,0,0,.1);border-radius:8px;background:rgba(0,0,0,.02)}.related .rt{font-family:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.7;margin:0 0 10px}.related ul{list-style:none;margin:0;padding:0;columns:2;column-gap:28px}.related li{break-inside:avoid;margin:0 0 8px;font-size:16px}.related a{text-decoration:none;border-bottom:1px solid rgba(0,0,0,.25)}@media(max-width:600px){.related ul{columns:1}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Cyber Essentials scope: what’s in, what’s out, and why \"whole organisation\" is almost always right", "description": "Cyber Essentials scope covers every device and account that can reach business data or the business network — home laptops and personal phones included. What is in, what is out, whole organisation versus a sub-set, and how to write the scope so the application isn’t bounced.", "url": "https://passcyber.co.uk/guides/cyber-essentials-scope", "datePublished": "2026-09-13", "author": {"@type": "Organization", "name": "PassCyber"}, "publisher": {"@type": "Organization", "name": "Edwards Bros (Spaldwick) Ltd", "url": "https://www.edwardsbros.co.uk/"}, "isPartOf": {"@type": "WebSite", "name": "PassCyber", "url": "https://passcyber.co.uk/"}}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="/">Pass<b>Cyber</b></a>
+    <nav>
+      <a href="/guides/">Guides</a>
+      <a href="/check">Readiness Check</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div class="wrap">
+<div class="doc">
+  <span class="crumb"><a href="/">PassCyber</a> / <a href="/guides/">Guides</a></span>
+  <h1>Cyber Essentials scope — what’s in, what’s out</h1>
+  <p class="stand">Every device and account that can reach your data or your network is in. Here is the full picture: the home-working laptop, the personal phone, the serviced-office router, the cloud services, and why certifying a sub-set is rarely the shortcut it looks like.</p>
+  <div class="meta"><span>Updated for the current question set</span><span>Reading time 5 minutes</span></div>
+
+<div class="prose">
+
+<h2>The short answer</h2>
+<p>Cyber Essentials scope is every device and account that can reach your business data or your business network: laptops, desktops, servers, phones and tablets — company-owned or personal — plus your firewalls, routers and cloud services. The default is "whole organisation", and that is what buyers, insurers and the free insurance all expect. You can certify a smaller scope, but it must be a separately networked sub-set, it must be declared on the certificate, and it usually causes more trouble than it saves.</p>
+
+<h2>What is always in scope</h2>
+<ul>
+  <li><strong>Every user device</strong> that accesses organisational data or services — including home-working laptops and any personal phone with work email on it. <a href="/guides/cyber-essentials-scope-personal-devices.html">Personal devices are the usual surprise.</a></li>
+  <li><strong>Every server</strong> — on premises or hosted — that you administer.</li>
+  <li><strong>Boundary devices</strong> — the firewalls and routers between your network and the internet. In a home or serviced office that includes kit you don’t own; <a href="/guides/cyber-essentials-serviced-office.html">here’s how that’s handled</a>.</li>
+  <li><strong>Cloud services</strong> — Microsoft 365, Google Workspace, Xero, your CRM, anything with a login that holds business data. You don’t patch the provider’s servers, but the MFA and account controls are yours to answer for.</li>
+  <li><strong>Accounts</strong> — every user and admin account on the above.</li>
+</ul>
+
+<h2>What is out of scope</h2>
+<ul>
+  <li>Devices that cannot reach business data or the business network at all — a till on its own isolated network, a machine-tool controller with no internet access.</li>
+  <li>Services where you are purely a consumer with no admin rights and no business data — but be honest: a shared spreadsheet in a personal Dropbox is business data.</li>
+  <li>Anything you have deliberately walled off into a separate network with its own boundary, <em>and</em> excluded on the application. Rare in a small business, and it must be real segmentation, not a line on a form.</li>
+</ul>
+
+<h2>The home-working question</h2>
+<p>A home router is not in scope if the laptop uses its own software firewall and the business runs no services on the home network. The laptop, however, is fully in scope — supported operating system, patched within 14 days, MFA on the cloud services it reaches. The same goes for the director’s personal machine used "just for email" at weekends. This is where most scope arguments end: if it touches the data, it’s in.</p>
+
+<h2>Whole organisation or a sub-set?</h2>
+<p>Certify the whole organisation unless you have a specific, defensible reason not to. Three things push you that way:</p>
+<ul>
+  <li><strong>Buyers assume it.</strong> A certificate scoped to "head office only" invites the question "what about the rest?" on every tender.</li>
+  <li><strong>The free insurance requires it.</strong> The <a href="/guides/cyber-essentials-insurance.html">£25,000 cyber liability cover</a> is only available for whole-organisation certification.</li>
+  <li><strong>Sub-sets are hard to prove.</strong> You must show the excluded part is on a separately controlled network with its own firewall. If a laptop can wander between the two, it isn’t separate.</li>
+</ul>
+<p>The legitimate case for a sub-set is a large organisation with a genuinely separate division, or an old estate you’re decommissioning that you can isolate until it’s gone. For a business under fifty people it almost never applies — and the certification fee is banded by the size of the organisation, not the scope, so a narrow scope doesn’t make it cheaper.</p>
+
+<h2>How to write the scope on the application</h2>
+<p>Name the organisation, state "whole organisation", and list the counts the questionnaire asks for: user devices by operating system and version, servers and what they run, mobile devices, cloud services, and the location(s) they operate from. If you have excluded anything, say exactly what and describe the network boundary that separates it. Vague scopes get sent back with questions, which costs you days; a scope that reads like an inventory sails through. The <a href="/guides/cyber-essentials-checklist.html">checklist</a> lists everything you need to have counted before you start.</p>
+
+<h2>Scope drift is what fails renewals</h2>
+<p>New starter, new laptop, new cloud tool, tablet bought for the workshop: all in scope from the day they arrive, all invisible to last year’s answers. Keep a one-page asset list and update it as things change, and <a href="/guides/cyber-essentials-renewal.html">renewal</a> becomes a re-check rather than a rediscovery.</p>
+
+<div class="ok">
+  <div class="t">The two-minute head start</div>
+  <p>Before anything else, run our <a href="/check">free readiness check</a> against the current rules — it flags the MFA and 14-day traps specifically, so you know in two minutes whether this year's renewal is a formality or a project.</p>
+</div>
+
+<div class="related">
+  <p class="rt">Related guides</p>
+  <ul>
+    <li><a href="/guides/cyber-essentials-scope-personal-devices.html">Are personal phones and home laptops in scope?</a></li>
+    <li><a href="/guides/cyber-essentials-serviced-office.html">Serviced offices and hot desks: whose firewall?</a></li>
+    <li><a href="/guides/cyber-essentials-checklist.html">The Cyber Essentials checklist</a></li>
+    <li><a href="/guides/cyber-essentials-application-details.html">The details that bounce an application</a></li>
+    <li><a href="/guides/cyber-essentials-cost.html">How much does Cyber Essentials cost?</a></li>
+    <li><a href="/guides/cyber-essentials-insurance.html">The free £25,000 insurance that comes with a pass</a></li>
+  </ul>
+</div>
+
+<div class="cta">
+  <div class="t">PassCyber</div>
+  <h2>Not sure what’s in scope? Ask before you apply.</h2>
+  <p>Fixed price, current-rules review before submission, fixes included, resubmission covered. We’ll agree the scope with you first, so the application doesn’t come back with questions.</p>
+  <p><a href="mailto:hello@passcyber.co.uk?subject=Cyber%20Essentials%20renewal">hello@passcyber.co.uk</a> &nbsp;·&nbsp; <a href="/check">Take the readiness check</a></p>
+  <p class="sig">PassCyber is a trading name of Edwards Bros (Spaldwick) Ltd</p>
+</div>
+
+</div>
+</div>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fb">PassCyber</div>
+    <p>Cyber Essentials certification support for small organisations.</p>
+    <p>PassCyber is a trading name of Edwards Bros (Spaldwick) Ltd, registered in England &amp; Wales no. 00598511, registered office Fenland House, 15b Hostmoor Avenue, March, Cambridgeshire PE15 0AX. ICO registration ZA900683. Certificates are awarded by a certification body accredited by IASME, not by PassCyber. Cyber Essentials is owned by the NCSC and delivered by IASME; PassCyber is not affiliated with either.</p>
+    <p><a href="/privacy">Privacy notice</a> · <a href="/guides/">Guides</a> · <a href="/">Home</a></p>
+  </div>
+</footer>
+
+
+</body>
+</html>
