@@ -1,0 +1,21 @@
+name: Generate guide pages (one-off)
+on:
+  push:
+    branches: [main]
+    paths: ['tools/gen_pages.py']
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate pages, remove tooling, commit
+        run: |
+          python3 tools/gen_pages.py
+          git rm -q -r tools .github/workflows/apply-gen-pages.yml
+          git config user.name "seo-bot"
+          git config user.email "seo-bot@users.noreply.github.com"
+          git add -A
+          git commit -m "Guides: checklist, logo, insurance, ISO 27001 vs CE (sitemap + guides index)"
+          git push
