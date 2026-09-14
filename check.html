@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Free Cyber Essentials Readiness Check — PassCyber</title>
-<meta name="description" content="Answer ten plain-English questions and get an instant readiness report against the five Cyber Essentials controls — including the two traps that fail businesses outright. Free, two minutes.">
+<meta name="description" content="Answer eleven plain-English questions and get an instant readiness report against the five Cyber Essentials controls — including the three rules that fail a submission outright under Danzell (v3.3). Free, two minutes.">
 <link rel="canonical" href="https://passcyber.co.uk/check">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,6 +38,8 @@
   .btn-go:hover{background:var(--go-deep)}
   .btn-line{border:1.5px solid var(--ink);color:var(--ink);background:transparent}
   .btn-line:hover{background:var(--ink);color:var(--paper)}
+  .btn.ghost{border:1.5px solid var(--go);color:var(--go);background:transparent}
+  .btn.ghost:hover{background:rgba(18,121,90,.08)}
   .intro .start{margin-top:26px}
 
   .quiz{display:none;padding:32px 0 56px}
@@ -80,7 +82,7 @@
   .capform{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
   .capform input[type=email]{flex:1;min-width:230px;padding:13px 15px;font-size:15px;font-family:inherit;border:1.5px solid var(--ink);border-radius:2px;background:var(--card)}
   .capok{display:none;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--go-deep);margin-bottom:14px}
-  .caprow{display:flex;gap:12px;flex-wrap:wrap}
+  .caprow{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
   .fineprint{margin-top:16px;font-size:12px;color:var(--steel)}
 
   footer{border-top:1px solid var(--line);margin-top:40px;padding:24px 0 40px}
@@ -88,11 +90,11 @@
 </style>
 <meta property="og:type" content="article">
 <meta property="og:title" content="Free Cyber Essentials Readiness Check — PassCyber">
-<meta property="og:description" content="Answer ten plain-English questions and get an instant readiness report against the five Cyber Essentials controls — including the two traps that fail businesses outright. Free, two minutes.">
+<meta property="og:description" content="Answer eleven plain-English questions and get an instant readiness report against the five Cyber Essentials controls — including the three rules that fail a submission outright under Danzell (v3.3). Free, two minutes.">
 <meta property="og:url" content="https://passcyber.co.uk/check">
 <meta property="og:site_name" content="PassCyber">
 <meta name="twitter:card" content="summary">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Free Cyber Essentials Readiness Check — PassCyber", "description": "Answer ten plain-English questions and get an instant readiness report against the five Cyber Essentials controls — including the two traps that fail businesses outright. Free, two minutes.", "url": "https://passcyber.co.uk/check", "isPartOf": {"@type": "WebSite", "name": "PassCyber", "url": "https://passcyber.co.uk/"}, "publisher": {"@type": "Organization", "name": "Edwards Bros (Spaldwick) Ltd", "url": "https://www.edwardsbros.co.uk/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Free Cyber Essentials Readiness Check — PassCyber", "description": "Answer eleven plain-English questions and get an instant readiness report against the five Cyber Essentials controls — including the three rules that fail a submission outright under Danzell (v3.3). Free, two minutes.", "url": "https://passcyber.co.uk/check", "isPartOf": {"@type": "WebSite", "name": "PassCyber", "url": "https://passcyber.co.uk/"}, "publisher": {"@type": "Organization", "name": "Edwards Bros (Spaldwick) Ltd", "url": "https://www.edwardsbros.co.uk/"}}</script>
 </head>
 <body>
 
@@ -106,13 +108,13 @@
 <section class="intro wrap" id="intro">
   <div class="kicker">Free · Two minutes · No sign-up to see your result</div>
   <h1>Would you pass Cyber Essentials today?</h1>
-  <p>Ten plain-English questions about how your business runs its computers. You'll get an instant readiness report against all five controls — and we'll flag the two traps that fail businesses outright, before they cost you the certificate.</p>
+  <p>Eleven plain-English questions about how your business runs its computers. You'll get an instant readiness report against all five controls — and we'll flag the three rules that fail a submission outright, before they cost you the certificate. Checked against Danzell (v3.3), the question set in force since April 2026.</p>
   <div class="start"><button class="btn btn-go" onclick="start()">Start the check</button></div>
 </section>
 
 <section class="quiz wrap" id="quiz" aria-live="polite">
-  <div class="qmeta"><span id="qcount">01 / 10</span><span class="ctrl" id="qctrl">Firewalls</span></div>
-  <div class="qbar"><i id="qfill" style="width:10%"></i></div>
+  <div class="qmeta"><span id="qcount">01 / 11</span><span class="ctrl" id="qctrl">Firewalls</span></div>
+  <div class="qbar"><i id="qfill" style="width:9%"></i></div>
   <div class="qtext" id="qtext"></div>
   <div class="qhelp" id="qhelp"></div>
   <div class="opts" id="opts"></div>
@@ -137,6 +139,7 @@
     </form>
     <div class="capok" id="capok">Done — your result is with us. We'll reply with your specific fix list, usually the same working day.</div>
     <div class="caprow">
+      <a class="btn ghost" id="callbtn" href="#">Or book a 15-minute call</a>
       <a id="emailbtn" href="#">Prefer email? Send your result from your own inbox</a>
       <button class="btn btn-line" onclick="restart()">Start again</button>
     </div>
@@ -146,7 +149,7 @@
 
 <footer>
   <div class="wrap">
-    <p>PassCyber prepares and manages Cyber Essentials submissions for UK businesses. Cyber Essentials is owned by the National Cyber Security Centre and delivered by IASME; PassCyber is not affiliated with either. This tool gives an informal readiness indication based on the five controls and current pass rules. hello@passcyber.co.uk</p>
+    <p>PassCyber prepares and manages Cyber Essentials submissions for UK businesses. Cyber Essentials is owned by the National Cyber Security Centre and delivered by IASME; PassCyber is not affiliated with either. This tool gives an informal readiness indication based on the five technical controls and the Danzell (v3.3) requirements, in force for assessment accounts created from 26 April 2026. hello@passcyber.co.uk</p>
   </div>
 </footer>
 
@@ -170,10 +173,12 @@ const Q = [
    o:[["Yes, on all",10],["On some",5],["No / not sure",0]]},
   {c:"Security update management", t:"Are security updates applied within about two weeks of release?", h:"Operating system and app updates — within 14 days is the rule. This one is critical.", trap:"patch",
    o:[["Yes, promptly",10],["Eventually, not always quick",5,"patch"],["No / not sure",0,"patch"]]},
-  {c:"Security update management", t:"Is everything you use still supported (still getting updates)?", h:"No very old Windows, unsupported phones, or end-of-life software.",
-   o:[["Yes, all current",10],["Not sure",4],["We have old kit",0]]},
+  {c:"Security update management", t:"Is everything you use still supported (still getting updates)?", h:"No very old Windows, unsupported phones, or end-of-life software. Unsupported software in scope is an outright fail.", trap:"eol",
+   o:[["Yes, all current",10],["Not sure",4,"eol"],["We have old kit",0,"eol"]]},
   {c:"User access control", t:"Are your passwords long — 12+ characters, or a password manager / three random words?", h:"Length beats complexity; a manager makes it easy.",
-   o:[["Yes",10],["Some are",5],["No / not sure",0]]}
+   o:[["Yes",10],["Some are",5],["No / not sure",0]]},
+  {c:"Secure configuration", t:"Does anyone use a personal phone or laptop for work email or files?", h:"Personal devices come into scope the moment they touch work data — this is the single most common scoping mistake.", scope:true,
+   o:[["No — work devices only",10],["Yes, and they're managed to the same standard",7,null,true],["Yes, and they're not managed",0,null,true]]}
 ];
 
 const CONTROLS = ["Firewalls","Secure configuration","User access control","Malware protection","Security update management"];
@@ -193,45 +198,51 @@ function render(){
   document.getElementById('qtext').textContent=q.t;
   document.getElementById('qhelp').textContent=q.h;
   const box=document.getElementById('opts');box.innerHTML='';
-  q.o.forEach((o,k)=>{const b=document.createElement('button');b.className='opt';b.textContent=o[0];b.onclick=()=>{ans[i]={pts:o[1],trap:o[2]||null};if(i<Q.length-1){i++;render();}else{finish();}};box.appendChild(b);});
+  q.o.forEach((o,k)=>{const b=document.createElement('button');b.className='opt';b.textContent=o[0];b.onclick=()=>{ans[i]={pts:o[1],trap:o[2]||null,scopeFlag:!!o[3]};if(i<Q.length-1){i++;render();}else{finish();}};box.appendChild(b);});
   document.getElementById('back').style.visibility=i===0?'hidden':'visible';
 }
 function goBack(){if(i>0){i--;render();}}
 
 function finish(){
-  let total=0; const perControl={}; CONTROLS.forEach(c=>perControl[c]={got:0,max:0});
-  let mfaFail=false, patchFail=false;
+  let raw=0; let total=0; const perControl={}; CONTROLS.forEach(c=>perControl[c]={got:0,max:0});
+  let mfaFail=false, patchFail=false, eolFail=false, byod=false;
   Q.forEach((q,k)=>{
-    total+=ans[k].pts;
+    raw+=ans[k].pts;
     perControl[q.c].got+=ans[k].pts; perControl[q.c].max+=10;
     if(ans[k].trap==='mfa')mfaFail=true;
     if(ans[k].trap==='patch')patchFail=true;
+    if(ans[k].trap==='eol')eolFail=true;
+    if(ans[k].scopeFlag)byod=true;
   });
-  const autofail = mfaFail || patchFail;
+  total = Math.round((raw / (Q.length*10)) * 100);
+  const autofail = mfaFail || patchFail || eolFail;
+  const failCount = (mfaFail?1:0)+(patchFail?1:0)+(eolFail?1:0);
 
   const V=document.getElementById('verdict'), S=document.getElementById('vsub');
   let band;
   if(autofail){ band='fail';
     V.className='bigverdict v-fail'; V.innerHTML='<span class="badge">✕</span> Not ready yet';
-    S.textContent='You scored '+total+'/100, but one of the two critical rules isn\u2019t met — and either one fails a real submission outright. The good news: these are usually quick, specific fixes.';
+    S.textContent='You scored '+total+'/100, but '+(failCount===3?'all three automatic-fail rules are missed':failCount===2?'two of the three automatic-fail rules are missed':'one of the three automatic-fail rules is missed')+' \u2014 any one of them fails a real submission outright, whatever else you get right. The good news: these are usually quick, specific fixes.';
   } else if(total>=80){ band='ready';
     V.className='bigverdict v-ready'; V.innerHTML='<span class="badge">✓</span> Ready to certify';
-    S.textContent='You scored '+total+'/100 with both critical rules met. You look genuinely close — a clean submission is well within reach.';
+    S.textContent='You scored '+total+'/100 with all three automatic-fail rules met. You look genuinely close — a clean submission is well within reach.';
   } else { band='close';
     V.className='bigverdict v-close'; V.innerHTML='<span class="badge">!</span> Close — a few gaps';
-    S.textContent='You scored '+total+'/100 and cleared both critical rules. A handful of fixes would get you certification-ready.';
+    S.textContent='You scored '+total+'/100 and cleared all three automatic-fail rules. A handful of fixes would get you certification-ready.';
   }
 
   const AF=document.getElementById('autofails'); AF.innerHTML='';
-  if(mfaFail){AF.innerHTML+='<div class="autofail"><h4>Trap 1 — two-step login (MFA)</h4><p>At least one cloud service isn\u2019t fully protected with two-step login. Under the current rules that fails the assessment on its own. It\u2019s usually a 10-minute fix per service.</p></div>';}
-  if(patchFail){AF.innerHTML+='<div class="autofail"><h4>Trap 2 — 14-day updates</h4><p>Security updates aren\u2019t reliably applied within 14 days. That also fails outright. Turning on automatic updates usually solves it.</p></div>';}
+  if(mfaFail){AF.innerHTML+='<div class="autofail"><h4>Automatic fail — two-step login (MFA)</h4><p>At least one cloud service isn\u2019t fully protected with two-step login. Under Danzell (v3.3), in force since April 2026, MFA is mandatory on every cloud service that offers it and missing it fails the assessment on its own. It\u2019s usually a 10-minute fix per service.</p></div>';}
+  if(patchFail){AF.innerHTML+='<div class="autofail"><h4>Automatic fail — 14-day updates</h4><p>High-risk and critical security updates aren\u2019t reliably applied within 14 days. That is an automatic fail under the current rules, and it covers router and firewall firmware as well as computers. Turning on automatic updates usually solves it.</p></div>';}
+  if(eolFail){AF.innerHTML+='<div class="autofail"><h4>Automatic fail — unsupported software</h4><p>Software or devices that no longer receive security updates cannot be in scope. Anything out of support has to be removed, replaced, or properly segregated from the rest of the network before you apply.</p></div>';}
+  if(byod){AF.innerHTML+='<div class="autofail" style="border-style:dashed"><h4>Scope warning — personal devices</h4><p>Personal phones and laptops come into scope the moment they touch work email or files. This is the most common reason a submission that looked fine gets marked down. It doesn\u2019t fail you automatically, but the devices have to meet the same standard as company kit.</p></div>';}
 
   const C=document.getElementById('controls'); C.innerHTML='';
   CONTROLS.forEach(c=>{
     const pc=perControl[c]; const pct=pc.max?pc.got/pc.max:0;
     let tag,cls; if(pct>=0.9){tag='Pass';cls='pass';}else if(pct>=0.5){tag='Partial';cls='part';}else{tag='Gap';cls='gap';}
     if(c==='User access control' && mfaFail){tag='Gap — MFA';cls='gap';}
-    if(c==='Security update management' && patchFail){tag='Gap — updates';cls='gap';}
+    if(c==='Security update management' && (patchFail||eolFail)){tag=patchFail?'Gap \u2014 updates':'Gap \u2014 unsupported';cls='gap';}
     C.innerHTML+='<div class="crow"><span>'+c+'</span><span class="tag '+cls+'">'+tag+'</span></div>';
   });
 
@@ -242,13 +253,17 @@ function finish(){
   else if(band==='close'){H.textContent='Let\u2019s close the gaps';B.textContent='A few specific fixes stand between you and the badge. Pop your email in and we\u2019ll send your exact fix list — or do the whole thing for you, guaranteed.';}
   else{H.textContent='These are fixable — fast';B.textContent='The critical items are usually the quickest to fix. Pop your email in and we\u2019ll send your specific fix list and how we\u2019d get you to a guaranteed pass.';}
 
-  lastResult={total:total,band:band,mfa:mfaFail,patch:patchFail};
+  lastResult={total:total,band:band,mfa:mfaFail,patch:patchFail,eol:eolFail,byod:byod};
 
   const lines = CONTROLS.map(c=>{const pc=perControl[c];const pct=pc.max?Math.round(pc.got/pc.max*100):0;return c+': '+pct+'%';}).join('%0D%0A');
-  const traps = (mfaFail?'MFA trap flagged. ':'')+(patchFail?'14-day update trap flagged.':'')||'No critical traps.';
+  const traps = ((mfaFail?'MFA automatic fail. ':'')+(patchFail?'14-day update automatic fail. ':'')+(eolFail?'Unsupported software automatic fail. ':'')+(byod?'Personal devices in scope.':''))||'No automatic fails flagged.';
   const subj = encodeURIComponent('CE Readiness '+total+'/100 — '+(band==='fail'?'critical gaps':band==='ready'?'ready':'close'));
   const body = 'My Cyber Essentials readiness result:%0D%0A%0D%0AScore: '+total+'/100%0D%0A'+lines+'%0D%0A'+traps+'%0D%0A%0D%0AI\u2019d like PassCyber to help me get certified. Best number to reach me: ';
   document.getElementById('emailbtn').href='mailto:'+CONTACT_EMAIL+'?subject='+subj+'&body='+body;
+
+  const cbSubj = encodeURIComponent('CE Readiness '+total+'/100 — please call me');
+  const cbBody = 'My Cyber Essentials readiness result:%0D%0A%0D%0AScore: '+total+'/100%0D%0A'+lines+'%0D%0A'+traps+'%0D%0A%0D%0APlease call me for fifteen minutes about getting certified.%0D%0AName:%0D%0ACompany:%0D%0ANumber:%0D%0ABest times:%0D%0A';
+  var cb=document.getElementById('callbtn'); if(cb){cb.href='mailto:'+CONTACT_EMAIL+'?subject='+cbSubj+'&body='+cbBody;}
 
   show('report');
 }
@@ -257,7 +272,8 @@ document.getElementById('capform').addEventListener('submit',async function(e){
   e.preventDefault();
   var em=document.getElementById('capemail').value.trim();
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)||!lastResult)return;
-  var src='passcyber-check|'+lastResult.total+'|'+lastResult.band+(lastResult.mfa?'|mfa':'')+(lastResult.patch?'|patch':'');
+  var src='passcyber-check|'+lastResult.total+'|'+lastResult.band+(lastResult.mfa?'|mfa':'')+(lastResult.patch?'|patch':'')+(lastResult.eol?'|eol':'')+(lastResult.byod?'|byod':'');
+  if(src.length>180)src=src.slice(0,180);
   try{
     await fetch('https://pesgnqmohcawmpcmsupl.supabase.co/rest/v1/funnel_signups',{
       method:'POST',
