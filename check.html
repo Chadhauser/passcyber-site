@@ -82,6 +82,7 @@
   .capform{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
   .capform input[type=email]{flex:1;min-width:230px;padding:13px 15px;font-size:15px;font-family:inherit;border:1.5px solid var(--ink);border-radius:2px;background:var(--card)}
   .capok{display:none;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--go-deep);margin-bottom:14px}
+  .caperr{display:none;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--fail);margin-bottom:14px}
   .caprow{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
   .fineprint{margin-top:16px;font-size:12px;color:var(--steel)}
 
@@ -138,6 +139,7 @@
       <button type="submit" class="btn btn-go">Send me my fix list</button>
     </form>
     <div class="capok" id="capok">Done — your result is with us. We'll reply with your specific fix list, usually the same working day.</div>
+    <div class="caperr" id="caperr"></div>
     <div class="caprow">
       <a class="btn ghost" id="callbtn" href="#">Or book a 15-minute call</a>
       <a id="emailbtn" href="#">Prefer email? Send your result from your own inbox</a>
@@ -188,7 +190,7 @@ let lastResult=null;
 
 function show(id){['intro','quiz','report'].forEach(s=>{document.getElementById(s).classList.remove('active');document.getElementById(s).style.display=(s===id?'':'none')});document.getElementById(id).classList.add('active');window.scrollTo({top:0});}
 function start(){i=0;render();show('quiz');}
-function restart(){ans.fill(null);document.getElementById('intro').style.display='';['quiz','report'].forEach(s=>document.getElementById(s).classList.remove('active'));document.getElementById('capform').style.display='flex';document.getElementById('capok').style.display='none';window.scrollTo({top:0});}
+function restart(){ans.fill(null);document.getElementById('intro').style.display='';['quiz','report'].forEach(s=>document.getElementById(s).classList.remove('active'));document.getElementById('capform').style.display='flex';document.getElementById('capok').style.display='none';document.getElementById('caperr').style.display='none';window.scrollTo({top:0});}
 
 function render(){
   const q=Q[i];
@@ -274,21 +276,56 @@ document.getElementById('capform').addEventListener('submit',async function(e){
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)||!lastResult)return;
   var src='passcyber-check|'+lastResult.total+'|'+lastResult.band+(lastResult.mfa?'|mfa':'')+(lastResult.patch?'|patch':'')+(lastResult.eol?'|eol':'')+(lastResult.byod?'|byod':'');
   if(src.length>180)src=src.slice(0,180);
+  var btn=this.querySelector('button[type=submit]');
+  var label=btn?btn.textContent:'';
+  if(btn){btn.disabled=true;btn.textContent='Sending\u2026';}
+  var captured=false;
+
+  // Primary: the serverless endpoint, which emails the lead and stores it server side.
   try{
-    await fetch('https://pesgnqmohcawmpcmsupl.supabase.co/rest/v1/funnel_signups',{
+    var r=await fetch('/api/lead',{
       method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'Content-Profile':'sheetmtd',
-        'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlc2ducW1vaGNhd21wY21zdXBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzMjE4OTAsImV4cCI6MjA5Mzg5Nzg5MH0.NQv6-XMYj5bTJKeohcZ58-KdDS2JNQlPP4N9ywxbvIs',
-        'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlc2ducW1vaGNhd21wY21zdXBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzMjE4OTAsImV4cCI6MjA5Mzg5Nzg5MH0.NQv6-XMYj5bTJKeohcZ58-KdDS2JNQlPP4N9ywxbvIs',
-        'Prefer':'return=minimal'
-      },
-      body:JSON.stringify({email:em.toLowerCase(),source:src})
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        email:em.toLowerCase(),
+        source:src,
+        score:lastResult.total,
+        band:lastResult.band,
+        flags:{mfa:lastResult.mfa,patch:lastResult.patch,eol:lastResult.eol,byod:lastResult.byod}
+      })
     });
-  }catch(err){}
-  document.getElementById('capform').style.display='none';
-  document.getElementById('capok').style.display='block';
+    captured=r.ok;
+  }catch(err){captured=false;}
+
+  // Fallback: the original direct write, so nothing is lost if the endpoint is unavailable.
+  if(!captured){
+    try{
+      var r2=await fetch('https://pesgnqmohcawmpcmsupl.supabase.co/rest/v1/funnel_signups',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+          'Content-Profile':'sheetmtd',
+          'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlc2ducW1vaGNhd21wY21zdXBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzMjE4OTAsImV4cCI6MjA5Mzg5Nzg5MH0.NQv6-XMYj5bTJKeohcZ58-KdDS2JNQlPP4N9ywxbvIs',
+          'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlc2ducW1vaGNhd21wY21zdXBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzMjE4OTAsImV4cCI6MjA5Mzg5Nzg5MH0.NQv6-XMYj5bTJKeohcZ58-KdDS2JNQlPP4N9ywxbvIs',
+          'Prefer':'return=minimal'
+        },
+        body:JSON.stringify({email:em.toLowerCase(),source:src})
+      });
+      captured=r2.ok;
+    }catch(err2){captured=false;}
+  }
+
+  if(btn){btn.disabled=false;btn.textContent=label;}
+
+  if(captured){
+    document.getElementById('caperr').style.display='none';
+    document.getElementById('capform').style.display='none';
+    document.getElementById('capok').style.display='block';
+  }else{
+    var ce=document.getElementById('caperr');
+    ce.innerHTML='That didn\u2019t send. Please email <a href="mailto:'+CONTACT_EMAIL+'">'+CONTACT_EMAIL+'</a> with your score and we\u2019ll pick it up from there.';
+    ce.style.display='block';
+  }
 });
 </script>
 </body>
