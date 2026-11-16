@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Am I ready for DCC Level 0? Free check — PassCyber</title>
+<meta name="description" content="Ten questions, two minutes: the GOV.UK Level 0 question set plus a Cyber Essentials scope check. See whether you could pass Defence Cyber Certification Level 0, then ask for a fixed quote.">
+<link rel="canonical" href="https://passcyber.co.uk/dcc-check">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#132420;--paper:#eef1ee;--card:#ffffff;
+    --go:#12795a;--go-deep:#0d5a43;--warn:#b07515;--fail:#a1341f;
+    --line:#c9d2cd;--steel:#566862;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+  body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:620px;margin:0 auto;padding:0 22px}
+  a{color:var(--go)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
+
+  header{border-bottom:1px solid var(--line)}
+  .top{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;max-width:620px;margin:0 auto}
+  .brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;text-decoration:none;color:var(--ink)}
+  .brand b{color:var(--go)}
+  .top small{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--steel)}
+
+  .intro{padding:50px 0 36px}
+  .kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--go);margin-bottom:14px}
+  h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,5.5vw,40px);line-height:1.08;letter-spacing:-.02em}
+  .intro p{margin-top:16px;color:var(--steel);max-width:52ch}
+  .btn{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;padding:13px 26px;border-radius:2px;text-decoration:none;display:inline-block;border:0;cursor:pointer;transition:.15s}
+  .btn-go{background:var(--go);color:#fff}
+  .btn-go:hover{background:var(--go-deep)}
+  .btn-line{border:1.5px solid var(--ink);color:var(--ink);background:transparent}
+  .btn-line:hover{background:var(--ink);color:var(--paper)}
+  .btn.ghost{border:1.5px solid var(--go);color:var(--go);background:transparent}
+  .btn.ghost:hover{background:rgba(18,121,90,.08)}
+  .intro .start{margin-top:26px}
+
+  .quiz{display:none;padding:32px 0 56px}
+  .quiz.active{display:block}
+  .qmeta{display:flex;justify-content:space-between;align-items:baseline;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--steel);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+  .qmeta .ctrl{color:var(--go)}
+  .qbar{height:3px;background:var(--line);margin-bottom:30px;position:relative}
+  .qbar i{position:absolute;inset:0 auto 0 0;background:var(--go);transition:width .25s ease}
+  .qtext{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(20px,4vw,26px);line-height:1.22;margin-bottom:8px}
+  .qhelp{color:var(--steel);font-size:14.5px;margin-bottom:22px}
+  .opts{display:grid;gap:10px}
+  .opt{text-align:left;font:inherit;cursor:pointer;background:var(--card);border:1px solid var(--line);border-radius:2px;padding:14px 16px;transition:.12s}
+  .opt:hover{border-color:var(--go)}
+  .qnav{margin-top:26px}
+  .back{background:none;border:0;font:inherit;color:var(--steel);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+  .back:hover{color:var(--ink)}
+
+  .report{display:none;padding:36px 0 40px}
+  .report.active{display:block}
+  .cert{background:var(--card);border:1px solid var(--ink);border-radius:3px;padding:28px 26px}
+  .cert-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:16px}
+  .cert-head h2{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+  .cert-head time{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--steel)}
+  .bigverdict{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(26px,5vw,34px);display:flex;align-items:center;gap:14px;line-height:1.1}
+  .bigverdict .badge{min-width:44px;height:44px;padding:0 8px;border-radius:6px;display:grid;place-items:center;color:#fff;font-size:20px}
+  .v-ready .badge{background:var(--go)} .v-ready{color:var(--go-deep)}
+  .v-close .badge{background:var(--warn)} .v-close{color:var(--warn)}
+  .v-fail .badge{background:var(--fail)} .v-fail{color:var(--fail)}
+  .vsub{margin-top:12px;font-size:15px;color:var(--ink)}
+  .autofail{margin-top:16px;border:1px solid var(--fail);border-radius:2px;padding:14px 16px;background:rgba(161,52,31,.05)}
+  .autofail h4{font-family:'Space Grotesk',sans-serif;font-size:14px;color:var(--fail);margin-bottom:6px}
+  .autofail p{font-size:13.5px;color:var(--ink);margin:0}
+  .controls{margin-top:20px;display:grid;gap:0}
+  .crow{display:flex;justify-content:space-between;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:13px;padding:10px 0;border-bottom:1px dotted var(--line)}
+  .crow .tag{font-weight:500}
+  .tag.pass{color:var(--go)} .tag.part{color:var(--warn)} .tag.gap{color:var(--fail)}
+  .capture{margin-top:30px;border-top:1px solid var(--line);padding-top:26px}
+  .capture h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:21px;margin-bottom:8px}
+  .capture p{color:var(--steel);font-size:14.5px;margin-bottom:18px;max-width:52ch}
+  .capform{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+  .capform input[type=email]{flex:1;min-width:230px;padding:13px 15px;font-size:15px;font-family:inherit;border:1.5px solid var(--ink);border-radius:2px;background:var(--card)}
+  .capok{display:none;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--go-deep);margin-bottom:14px}
+  .caperr{display:none;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--fail);margin-bottom:14px}
+  .caprow{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .fineprint{margin-top:16px;font-size:12px;color:var(--steel)}
+
+  .wrap.intro,.wrap.quiz,.wrap.report{padding-left:22px;padding-right:22px}
+  footer{border-top:1px solid var(--line);margin-top:40px;padding:24px 0 40px}
+  footer p{font-size:12px;color:var(--steel);max-width:66ch}
+  .gaps{margin-top:18px;display:grid;gap:10px}
+  .gap{border:1px solid var(--fail);border-radius:2px;padding:12px 14px;background:rgba(161,52,31,.05)}
+  .gap h4{font-family:'Space Grotesk',sans-serif;font-size:14px;color:var(--fail);margin-bottom:4px}
+  .gap p{font-size:13.5px;margin:0}
+  .note{margin-top:18px;border-left:3px solid var(--warn);padding:10px 14px;background:#fff;font-size:14px}
+  .capform select,.capform textarea{width:100%;padding:12px 14px;font-size:15px;font-family:inherit;border:1.5px solid var(--ink);border-radius:2px;background:var(--card)}
+  .capform textarea{min-height:70px}
+  .capform label{display:block;width:100%;font-size:13.5px;color:var(--steel);margin-bottom:-4px}
+</style>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Am I ready for DCC Level 0? Free check — PassCyber">
+<meta property="og:description" content="Ten questions, two minutes: the GOV.UK Level 0 question set plus a Cyber Essentials scope check. See whether you could pass Defence Cyber Certification Level 0, then ask for a fixed quote.">
+<meta property="og:url" content="https://passcyber.co.uk/dcc-check">
+<meta property="og:site_name" content="PassCyber">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Am I ready for DCC Level 0? Free check — PassCyber", "description": "Ten questions, two minutes: the GOV.UK Level 0 question set plus a Cyber Essentials scope check. See whether you could pass Defence Cyber Certification Level 0, then ask for a fixed quote.", "url": "https://passcyber.co.uk/dcc-check", "isPartOf": {"@type": "WebSite", "name": "PassCyber", "url": "https://passcyber.co.uk/"}, "publisher": {"@type": "Organization", "name": "Edwards Bros (Spaldwick) Ltd", "url": "https://www.edwardsbros.co.uk/"}}</script>
+</head>
+<body>
+
+<header>
+  <div class="top">
+    <a href="/" class="brand">Pass<b>Cyber</b></a>
+    <small>DCC Level 0 Check</small>
+  </div>
+</header>
+
+<section class="intro wrap" id="intro">
+  <div class="kicker">Free · Two minutes · No sign-up to see your result</div>
+  <h1>Am I ready for DCC Level 0?</h1>
+  <p>Ten questions. Eight come from the MOD's Level 0 Supplier Assurance Questionnaire published on GOV.UK. The other two check your Cyber Essentials scope, a common reason a Level 0 application stalls.</p>
+  <p class="note"><b>Is it compulsory?</b> The Ministry of Defence has asked all its suppliers to reach Defence Cyber Certification Level 0 by 31 December 2026. That is a request from the MOD, not a legal requirement. It only becomes binding if your contract says so, but primes are already asking their subcontractors for it.</p>
+  <div class="start"><button class="btn btn-go" onclick="start()">Start the check</button></div>
+</section>
+
+<section class="quiz wrap" id="quiz" aria-live="polite">
+  <div class="qmeta"><span id="qcount">01 / 10</span><span class="ctrl" id="qctrl"></span></div>
+  <div class="qbar"><i id="qfill" style="width:10%"></i></div>
+  <div class="qtext" id="qtext"></div>
+  <div class="qhelp" id="qhelp"></div>
+  <div class="opts" id="opts"></div>
+  <div class="qnav"><button class="back" id="back" onclick="goBack()">Back</button></div>
+</section>
+
+<section class="report wrap" id="report">
+  <div class="cert">
+    <div class="cert-head"><h2>DCC Level 0 · Readiness Report</h2><time id="rdate"></time></div>
+    <div class="bigverdict" id="verdict"></div>
+    <p class="vsub" id="vsub"></p>
+    <div class="gaps" id="gaps"></div>
+  </div>
+
+  <div class="capture">
+    <h3>Ask for a fixed quote</h3>
+    <p id="capbody"></p>
+    <form class="capform" id="capform" novalidate>
+      <input type="email" id="capemail" placeholder="you@business.co.uk" required aria-label="Email address">
+      <label for="capwho">Who is asking you for DCC? (optional)</label>
+      <textarea id="capwho" maxlength="300" placeholder="For example: our prime contractor, or an MOD tender"></textarea>
+      <button type="submit" class="btn btn-go">Send me a quote</button>
+    </form>
+    <div class="capok" id="capok">Done. Your result is with us and we will reply with a fixed price, usually the same working day.</div>
+    <div class="caperr" id="caperr"></div>
+    <div class="caprow">
+      <a href="/check">Check your Cyber Essentials readiness</a>
+      <button class="btn btn-line" onclick="restart()">Start again</button>
+    </div>
+    <p class="fineprint">Indicative only. This is a readiness view, not a certification decision. DCC certificates are awarded by an IASME-licensed DCC Certification Body, not by PassCyber. The full assessment uses the current IASME applicant guidance. We use your email to reply about your result and nothing else.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Questions 1 to 8 follow the Cyber Security Model Supplier Assurance Questionnaire, Cyber Risk Profile Level 0, version 1.0 (December 2025), published by the Ministry of Defence on GOV.UK. PassCyber is not affiliated with the MOD or IASME. PassCyber is a trading name of Edwards Bros (Spaldwick) Ltd, registered in England &amp; Wales no. 00598511, registered office Fenland House, 15b Hostmoor Avenue, March, Cambridgeshire PE15 0AX. hello@passcyber.co.uk · <a href="/privacy">Privacy notice</a> · <a href="/dcc">About DCC Level 0</a></p>
+  </div>
+<nav class="estate-links" aria-label="Other sites from Edwards Bros" style="font-size:.85rem;line-height:1.5;opacity:.85;margin-top:1rem"><!--estate-links-->Also from Edwards Bros (Spaldwick) Ltd: <a href="https://www.edwardsbros.co.uk/" rel="noopener">Edwards Bros</a> &middot; <a href="https://complysimple.co.uk/" rel="noopener">ComplySimple</a> &middot; <a href="https://granton.finance/" rel="noopener">Granton Finance</a></nav>
+</footer>
+
+<script>
+const CONTACT_EMAIL = "hello@passcyber.co.uk";
+
+// gap: the key and the fix shown if the answer is a gap. size: records company size only.
+const Q = [
+  {c:"General information", t:"How many people work in your organisation?", h:"Level 0 question GI-1. This sets your Cyber Essentials and DCC fee band; it does not affect readiness.", size:true,
+   o:[["Fewer than 10","<10"],["10 to 99","10-99"],["100 or more","100+"]]},
+  {c:"General information", t:"Is one named person responsible for cyber security?", h:"Level 0 question GI-2. It does not need to be a specialist. In a small business it is often a director.",
+   o:[["Yes, we have named someone",0],["No / not sure",1]], gap:["named","Name a head of cyber security","The questionnaire asks for the name of the person responsible. Pick one person, usually a director, and write it down."]},
+  {c:"General information", t:"Do you have an email address for cyber security matters?", h:"Level 0 question GI-3. A team mailbox or one person's address both count.",
+   o:[["Yes",0],["No / not sure",1]], gap:["email","Set a cyber security contact address","The MOD needs an address to reach you about cyber issues. A simple forward such as security@ to the named person is enough."]},
+  {c:"Cyber Essentials", t:"Do you hold a current Cyber Essentials certificate?", h:"Level 0 question CE-1. Level 0 cannot be awarded without Cyber Essentials.",
+   o:[["Yes, it is current",0],["It has lapsed, or is in progress",1],["No",1]], gap:["ce","Get Cyber Essentials first","Cyber Essentials is the foundation of Level 0. This is the main piece of work, and we can prepare it for you."]},
+  {c:"Cyber Essentials", t:"Will you keep Cyber Essentials renewed every year for as long as the contract runs?", h:"Level 0 question CE-2. Certificates last 12 months, so this is a commitment to renew on time.",
+   o:[["Yes",0],["Not sure",1]], gap:["renew","Commit to renewing Cyber Essentials","The questionnaire asks you to commit to keeping certification for the life of any contract. Put the renewal date in the diary now."]},
+  {c:"Data security", t:"Do you have written policies and procedures for meeting UK GDPR?", h:"Level 0 question DS-1. For example a data protection policy, a privacy notice and a breach procedure.",
+   o:[["Yes, written down",0],["Partly",1],["No / not sure",1]], gap:["gdpr","Write down your UK GDPR procedures","You need documented policies and procedures, not just good habits: a data protection policy, a privacy notice and a breach procedure as a minimum."]},
+  {c:"Network and system resilience", t:"Have you assessed how resilient your systems need to be to a cyber attack or a failure?", h:"Level 0 question NSR-1. In plain terms: which systems you cannot work without, and for how long.",
+   o:[["Yes",0],["Not formally",1],["No / not sure",1]], gap:["nsr1","Assess what you cannot work without","List your critical systems, the impact of losing each, and the longest outage you could live with. One page is enough for most small firms."]},
+  {c:"Network and system resilience", t:"Have you built in that resilience, such as backups and a way to keep working?", h:"Level 0 question NSR-2. For example tested backups and a continuity plan.",
+   o:[["Yes, and we have tested it",0],["We have backups but have not tested them",1],["No / not sure",1]], gap:["nsr2","Put the resilience in place and test it","Back up what matters, write a short continuity plan and test both. A restore test and a short tabletop exercise are what an assessor will look for."]},
+  {c:"Cyber Essentials scope check", t:"Does your Cyber Essentials cover every device and system used for your defence work?", h:"Level 0 requires Cyber Essentials for all business-critical systems in scope. A certificate that excludes the laptops or cloud services used on MOD work will not do.",
+   o:[["Yes, the whole organisation is in scope",0],["Only part of the business is in scope",1],["Not sure / no certificate yet",1]], gap:["scope","Line up your Cyber Essentials scope","Your Cyber Essentials scope must cover everything used for the defence work. If it was scoped to part of the business, it may need re-scoping at renewal."]},
+  {c:"Cyber Essentials scope check", t:"Will your Cyber Essentials still be in date on 31 December 2026?", h:"If it expires before then, plan the renewal so there is no gap while you apply for Level 0.",
+   o:[["Yes",0],["No, it expires before then",1],["Not sure / no certificate yet",1]], gap:["date","Renew before 31 December","Book the renewal now so the certificate is in date when the DCC assessment is done."]}
+];
+
+let i=0; const ans=new Array(Q.length).fill(null);
+let lastResult=null;
+
+function show(id){['intro','quiz','report'].forEach(s=>{document.getElementById(s).classList.remove('active');document.getElementById(s).style.display=(s===id?'':'none')});document.getElementById(id).classList.add('active');window.scrollTo({top:0});}
+function start(){i=0;render();show('quiz');}
+function restart(){ans.fill(null);lastResult=null;document.getElementById('intro').style.display='';['quiz','report'].forEach(s=>{document.getElementById(s).classList.remove('active');document.getElementById(s).style.display='none';});document.getElementById('capform').style.display='flex';document.getElementById('capok').style.display='none';document.getElementById('caperr').style.display='none';window.scrollTo({top:0});}
+
+function render(){
+  const q=Q[i];
+  document.getElementById('qcount').textContent=String(i+1).padStart(2,'0')+' / '+String(Q.length).padStart(2,'0');
+  document.getElementById('qctrl').textContent=q.c;
+  document.getElementById('qfill').style.width=((i+1)/Q.length*100)+'%';
+  document.getElementById('qtext').textContent=q.t;
+  document.getElementById('qhelp').textContent=q.h;
+  const box=document.getElementById('opts');box.innerHTML='';
+  q.o.forEach(o=>{const b=document.createElement('button');b.className='opt';b.textContent=o[0];b.onclick=()=>{ans[i]=o[1];if(i<Q.length-1){i++;render();}else{finish();}};box.appendChild(b);});
+  document.getElementById('back').style.visibility=i===0?'hidden':'visible';
+}
+function goBack(){if(i>0){i--;render();}}
+
+function score(answers){
+  let size='', gaps=[];
+  Q.forEach((q,k)=>{ if(q.size){size=answers[k];} else if(answers[k]===1){gaps.push(q.gap);} });
+  const ceGap=gaps.some(g=>g[0]==='ce');
+  const band = gaps.length===0 ? 'ready' : (ceGap ? 'no-ce' : 'gaps');
+  return {size:size,gaps:gaps,band:band};
+}
+
+function finish(){
+  const r=score(ans);
+  const met=9-r.gaps.length;
+  const V=document.getElementById('verdict'), S=document.getElementById('vsub'), G=document.getElementById('gaps'), B=document.getElementById('capbody');
+  if(r.band==='ready'){
+    V.className='bigverdict v-ready'; V.innerHTML='<span class="badge">&#10003;</span>Ready to apply';
+    S.textContent='You meet all 9 readiness points. An IASME DCC Certification Body still makes the decision, but nothing here should stop you.';
+    B.textContent='We will confirm your scope lines up and prepare the application. Leave your email for a fixed price.';
+  } else if(r.band==='no-ce'){
+    V.className='bigverdict v-fail'; V.innerHTML='<span class="badge">'+met+'/9</span>Cyber Essentials first';
+    S.textContent='Level 0 cannot be awarded without Cyber Essentials. Get that in place first, then the rest is quick.';
+    B.textContent='We can prepare Cyber Essentials and Level 0 together, so the shared work is only paid for once. Leave your email for a fixed price for both.';
+  } else {
+    V.className='bigverdict v-close'; V.innerHTML='<span class="badge">'+met+'/9</span>Close, with '+r.gaps.length+(r.gaps.length===1?' gap':' gaps');
+    S.textContent='Level 0 has no partial pass: every point must be met. These are the ones to fix.';
+    B.textContent='Most of these take days, not weeks. Leave your email and we will send a fixed price to close them and prepare the application.';
+  }
+  G.innerHTML='';
+  r.gaps.forEach(g=>{const d=document.createElement('div');d.className='gap';const h=document.createElement('h4');h.textContent=g[1];const p=document.createElement('p');p.textContent=g[2];d.appendChild(h);d.appendChild(p);G.appendChild(d);});
+  document.getElementById('rdate').textContent=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+  lastResult={met:met,band:r.band,size:r.size,gaps:r.gaps.map(g=>g[0])};
+  show('report');
+}
+
+document.getElementById('capform').addEventListener('submit',async function(e){
+  e.preventDefault();
+  var em=document.getElementById('capemail').value.trim();
+  var ce=document.getElementById('caperr');
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){ce.textContent='Please enter a valid email address.';ce.style.display='block';return;}
+  if(!lastResult)return;
+  var who=document.getElementById('capwho').value.trim().slice(0,300);
+  var src=('passcyber-dcc|'+lastResult.met+'/9|'+lastResult.band+'|size:'+lastResult.size+(lastResult.gaps.length?'|'+lastResult.gaps.join(','):'')).slice(0,180);
+  var details='DCC Level 0 check: '+lastResult.met+'/9 met. Size: '+lastResult.size+'. Gaps: '+(lastResult.gaps.length?lastResult.gaps.join(', '):'none')+'. Who is asking: '+(who||'not given');
+  var btn=this.querySelector('button[type=submit]'); var label=btn.textContent;
+  btn.disabled=true; btn.textContent='Sending\u2026';
+  var captured=false;
+  try{
+    var r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em.toLowerCase(),source:src,score:lastResult.met,band:'dcc-'+lastResult.band,details:details})});
+    captured=r.ok;
+  }catch(err){captured=false;}
+  btn.disabled=false; btn.textContent=label;
+  if(captured){
+    ce.style.display='none';
+    document.getElementById('capform').style.display='none';
+    document.getElementById('capok').style.display='block';
+  }else{
+    ce.innerHTML='That did not send. Please email <a href="mailto:'+CONTACT_EMAIL+'?subject=DCC%20Level%200%20quote">'+CONTACT_EMAIL+'</a> with your result and we will pick it up from there.';
+    ce.style.display='block';
+  }
+});
+</script>
+</body>
+</html>

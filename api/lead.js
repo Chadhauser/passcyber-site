@@ -45,6 +45,9 @@ export default async function handler(req, res) {
   const score = Number.isFinite(Number(body.score)) ? Number(body.score) : null;
   const band = clean(body.band, 40);
   const flags = (body.flags && typeof body.flags === 'object') ? body.flags : {};
+  const details = clean(body.details, 600);
+  const isDcc = source.startsWith('passcyber-dcc');
+  const label = isDcc ? 'DCC Level 0 check' : 'CE readiness check';
 
   const problems = [];
   if (flags.mfa) problems.push('multi-factor authentication');
@@ -56,12 +59,13 @@ export default async function handler(req, res) {
 
   if (process.env.RESEND_API_KEY && process.env.NOTIFY_EMAIL && process.env.FROM_EMAIL) {
     const text = [
-      `New Cyber Essentials readiness check completed.`,
+      isDcc ? `New DCC Level 0 readiness check completed. They asked for a quote.` : `New Cyber Essentials readiness check completed.`,
       ``,
       `Email:    ${email}`,
       `Score:    ${score === null ? 'n/a' : score}`,
       `Band:     ${band || 'n/a'}`,
-      `Problems: ${problems.length ? problems.join(', ') : 'none flagged'}`,
+      ...(isDcc ? [] : [`Problems: ${problems.length ? problems.join(', ') : 'none flagged'}`]),
+      ...(details ? [`Details:  ${details}`] : []),
       ``,
       `Source:   ${source}`,
       `Time:     ${new Date().toISOString()}`,
@@ -80,7 +84,7 @@ export default async function handler(req, res) {
           from: process.env.FROM_EMAIL,
           to: process.env.NOTIFY_EMAIL,
           reply_to: email,
-          subject: `CE readiness check - ${band || 'result'}${score === null ? '' : ' (' + score + ')'} - ${email}`,
+          subject: `${label} - ${band || 'result'}${score === null ? '' : ' (' + score + ')'} - ${email}`,
           text
         })
       });
