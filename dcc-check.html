@@ -140,15 +140,16 @@
   </div>
 
   <div class="capture">
-    <h3>Ask for a fixed quote</h3>
+    <h3>MOD Level 0 readiness: &pound;495 + VAT, fixed</h3>
     <p id="capbody"></p>
+    <p>We check your Cyber Essentials answers against the questions that fail a submission outright, send you a fix list within 2 working days, and fix it with you. The certificates themselves are issued by an IASME-licensed Certification Body, and their certification fees are separate.</p>
     <form class="capform" id="capform" novalidate>
       <input type="email" id="capemail" placeholder="you@business.co.uk" required aria-label="Email address">
       <label for="capwho">Who is asking you for DCC? (optional)</label>
       <textarea id="capwho" maxlength="300" placeholder="For example: our prime contractor, or an MOD tender"></textarea>
-      <button type="submit" class="btn btn-go">Send me a quote</button>
+      <button type="submit" class="btn btn-go">Book my Level 0 readiness</button>
     </form>
-    <div class="capok" id="capok">Done. Your result is with us and we will reply with a fixed price, usually the same working day.</div>
+    <div class="capok" id="capok">Done. Your result is with us and we will reply the same working day to get started.</div>
     <div class="caperr" id="caperr"></div>
     <div class="caprow">
       <a href="/check">Check your Cyber Essentials readiness</a>
@@ -227,15 +228,15 @@ function finish(){
   if(r.band==='ready'){
     V.className='bigverdict v-ready'; V.innerHTML='<span class="badge">&#10003;</span>Ready to apply';
     S.textContent='You meet all 9 readiness points. An IASME DCC Certification Body still makes the decision, but nothing here should stop you.';
-    B.textContent='We will confirm your scope lines up and prepare the application. Leave your email for a fixed price.';
+    B.textContent='You look ready. Leave your email and we will check your answers properly before you apply.';
   } else if(r.band==='no-ce'){
     V.className='bigverdict v-fail'; V.innerHTML='<span class="badge">'+met+'/9</span>Cyber Essentials first';
     S.textContent='Level 0 cannot be awarded without Cyber Essentials. Get that in place first, then the rest is quick.';
-    B.textContent='We can prepare Cyber Essentials and Level 0 together, so the shared work is only paid for once. Leave your email for a fixed price for both.';
+    B.textContent='Cyber Essentials comes first. Leave your email and we will get your answers ready for it and for Level 0 together.';
   } else {
     V.className='bigverdict v-close'; V.innerHTML='<span class="badge">'+met+'/9</span>Close, with '+r.gaps.length+(r.gaps.length===1?' gap':' gaps');
     S.textContent='Level 0 has no partial pass: every point must be met. These are the ones to fix.';
-    B.textContent='Most of these take days, not weeks. Leave your email and we will send a fixed price to close them and prepare the application.';
+    B.textContent='Most of these take days, not weeks. Leave your email and we will close them with you.';
   }
   G.innerHTML='';
   r.gaps.forEach(g=>{const d=document.createElement('div');d.className='gap';const h=document.createElement('h4');h.textContent=g[1];const p=document.createElement('p');p.textContent=g[2];d.appendChild(h);d.appendChild(p);G.appendChild(d);});
