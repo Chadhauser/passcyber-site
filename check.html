@@ -142,7 +142,7 @@
     <div class="capok" id="capok">Done — your result is with us. We'll reply with your specific fix list, usually the same working day.</div>
     <div class="caperr" id="caperr"></div>
     <div class="caprow">
-      <a class="btn ghost" id="callbtn" href="#">Or book a 15-minute call</a>
+      <a class="btn ghost" id="callbtn" href="#">Or email me a fixed quote</a>
       <a id="emailbtn" href="#">Prefer email? Send your result from your own inbox</a>
       <button class="btn btn-line" onclick="restart()">Start again</button>
     </div>
@@ -262,11 +262,11 @@ function finish(){
   const lines = CONTROLS.map(c=>{const pc=perControl[c];const pct=pc.max?Math.round(pc.got/pc.max*100):0;return c+': '+pct+'%';}).join('%0D%0A');
   const traps = ((mfaFail?'MFA automatic fail. ':'')+(patchFail?'14-day update automatic fail. ':'')+(eolFail?'Unsupported software automatic fail. ':'')+(byod?'Personal devices in scope.':''))||'No automatic fails flagged.';
   const subj = encodeURIComponent('CE Readiness '+total+'/100 — '+(band==='fail'?'critical gaps':band==='ready'?'ready':'close'));
-  const body = 'My Cyber Essentials readiness result:%0D%0A%0D%0AScore: '+total+'/100%0D%0A'+lines+'%0D%0A'+traps+'%0D%0A%0D%0AI\u2019d like PassCyber to help me get certified. Best number to reach me: ';
+  const body = 'My Cyber Essentials readiness result:%0D%0A%0D%0AScore: '+total+'/100%0D%0A'+lines+'%0D%0A'+traps+'%0D%0A%0D%0AI\u2019d like PassCyber to help me get certified.';
   document.getElementById('emailbtn').href='mailto:'+CONTACT_EMAIL+'?subject='+subj+'&body='+body;
 
-  const cbSubj = encodeURIComponent('CE Readiness '+total+'/100 — please call me');
-  const cbBody = 'My Cyber Essentials readiness result:%0D%0A%0D%0AScore: '+total+'/100%0D%0A'+lines+'%0D%0A'+traps+'%0D%0A%0D%0APlease call me for fifteen minutes about getting certified.%0D%0AName:%0D%0ACompany:%0D%0ANumber:%0D%0ABest times:%0D%0A';
+  const cbSubj = encodeURIComponent('CE Readiness '+total+'/100 — quote please');
+  const cbBody = 'My Cyber Essentials readiness result:%0D%0A%0D%0AScore: '+total+'/100%0D%0A'+lines+'%0D%0A'+traps+'%0D%0A%0D%0APlease email me a fixed quote for getting certified.%0D%0AName:%0D%0ACompany:%0D%0ANumber of staff:%0D%0A';
   var cb=document.getElementById('callbtn'); if(cb){cb.href='mailto:'+CONTACT_EMAIL+'?subject='+cbSubj+'&body='+cbBody;}
 
   show('report');

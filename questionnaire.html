@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supplier security questionnaires, completed for you</title>
+<meta name="description" content="A customer or prime contractor has sent you a security questionnaire. PassCyber completes it from your Cyber Essentials answers for a fixed £295 plus VAT, returned within 5 working days.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://passcyber.co.uk/questionnaire">
+<meta name="theme-color" content="#132420">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PassCyber">
+<meta property="og:title" content="Supplier security questionnaires, completed for you">
+<meta property="og:description" content="A customer or prime contractor has sent you a security questionnaire. PassCyber completes it from your Cyber Essentials answers for a fixed £295 plus VAT, returned within 5 working days.">
+<meta property="og:url" content="https://passcyber.co.uk/questionnaire">
+<meta property="og:locale" content="en_GB">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/guide.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Supplier security questionnaires, completed for you", "description": "A customer or prime contractor has sent you a security questionnaire. PassCyber completes it from your Cyber Essentials answers for a fixed £295 plus VAT, returned within 5 working days.", "url": "https://passcyber.co.uk/questionnaire", "isPartOf": {"@type": "WebSite", "name": "PassCyber", "url": "https://passcyber.co.uk/"}, "publisher": {"@type": "Organization", "name": "Edwards Bros (Spaldwick) Ltd", "url": "https://www.edwardsbros.co.uk/"}}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="/">Pass<b>Cyber</b></a>
+    <nav>
+      <a href="/guides/">Guides</a>
+      <a href="/check">Readiness Check</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div class="wrap">
+<div class="doc">
+  <span class="crumb"><a href="/">PassCyber</a> / Security questionnaires</span>
+  <h1>A customer sent you a security questionnaire. We fill it in.</h1>
+  <p class="stand">Before they sign or renew, many customers and prime contractors send suppliers a list of security questions. We complete it for you from your Cyber Essentials answers, you check it, and you send it back. Fixed price, &pound;295 plus VAT.</p>
+
+<div class="prose">
+
+<h2>What you get</h2>
+<ul>
+<li>Every question answered in plain, accurate English, matching how your business actually works.</li>
+<li>A short list of anything you cannot honestly say yes to yet, and what it would take to fix.</li>
+<li>Returned within 5 working days of receiving the questionnaire and your answers.</li>
+</ul>
+
+<h2>How it works</h2>
+<ol>
+<li>Send us the questionnaire using the form below, or email it to hello@passcyber.co.uk.</li>
+<li>We send a fixed quote and our engagement letter. Payment is up front.</li>
+<li>We draft every answer from your Cyber Essentials answers and ask you about anything they do not cover.</li>
+<li>You check the answers and send the questionnaire to your customer.</li>
+</ol>
+
+<h2>No Cyber Essentials yet?</h2>
+<p>Most questionnaires ask for it anyway. We can prepare both together. <a href="/check">Take the free readiness check</a> to see where you stand.</p>
+
+<div class="cta" id="quote">
+  <div class="t">PassCyber &middot; questionnaire quote</div>
+  <h2>Ask for a fixed quote</h2>
+  <form id="qform" novalidate style="display:grid;gap:10px;max-width:520px">
+    <input type="hidden" id="qwhat" value="questionnaire">
+    <textarea id="qdetail" maxlength="400" placeholder="Who sent the questionnaire, how many questions roughly, and when is it due?" style="padding:12px;font:inherit;min-height:80px"></textarea>
+    <input type="email" id="qemail" placeholder="you@business.co.uk" aria-label="Email address" style="padding:12px;font:inherit">
+    <button type="submit" class="btn btn-go" style="padding:12px;font:inherit;cursor:pointer">Send for a quote</button>
+  </form>
+  <p id="qok" style="display:none;color:#fff;font-weight:600">Done. We will reply the same working day.</p>
+  <p id="qerr" style="display:none;color:#ffb4a2"></p>
+  <p class="sig">PassCyber is a trading name of Edwards Bros (Spaldwick) Ltd. Answers are drafted for you to check; you send the questionnaire to your customer.</p>
+</div>
+
+</div>
+</div>
+</div>
+<script>
+document.getElementById('qform').addEventListener('submit',async function(e){
+  e.preventDefault();
+  var em=document.getElementById('qemail').value.trim(), err=document.getElementById('qerr');
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){err.textContent='Please enter a valid email address.';err.style.display='block';return;}
+  var what=document.getElementById('qwhat').value, det=document.getElementById('qdetail').value.trim().slice(0,400);
+  var btn=this.querySelector('button'); btn.disabled=true; var ok=false;
+  try{var r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em.toLowerCase(),source:'passcyber-questionnaire',band:'questionnaire',details:'Wants: security questionnaire. Detail: '+(det||'not given')})});ok=r.ok;}catch(x){ok=false;}
+  btn.disabled=false;
+  if(ok){err.style.display='none';this.style.display='none';document.getElementById('qok').style.display='block';}
+  else{err.innerHTML='That did not send. Please email <a href="mailto:hello@passcyber.co.uk?subject=Security%20questionnaire">hello@passcyber.co.uk</a>.';err.style.display='block';}
+});
+</script>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fb">PassCyber</div>
+    <p>Cyber Essentials certification support for small organisations.</p>
+    <p>PassCyber is a trading name of Edwards Bros (Spaldwick) Ltd, registered in England &amp; Wales no. 00598511, registered office Fenland House, 15b Hostmoor Avenue, March, Cambridgeshire PE15 0AX. ICO registration ZA900683. Certificates are awarded by a certification body accredited by IASME, not by PassCyber.</p>
+    <p><a href="/privacy">Privacy notice</a> · <a href="/guides/">Guides</a> · <a href="/">Home</a></p>
+  </div>
+<nav class="estate-links" aria-label="Other sites from Edwards Bros" style="font-size:.85rem;line-height:1.5;opacity:.85;margin-top:1rem"><!--estate-links-->Also from Edwards Bros (Spaldwick) Ltd: <a href="https://www.edwardsbros.co.uk/" rel="noopener">Edwards Bros</a> &middot; <a href="https://complysimple.co.uk/" rel="noopener">ComplySimple</a> &middot; <a href="https://granton.finance/" rel="noopener">Granton Finance</a></nav>
+</footer>
+
+</body>
+</html>
