@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Penetration testing and Cyber Essentials Plus, managed for you</title>
+<meta name="description" content="CREST-accredited penetration testing and Cyber Essentials Plus for small businesses, scoped and managed by PassCyber from first call to final report. Send what you need tested for a fixed quote.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://passcyber.co.uk/testing">
+<meta name="theme-color" content="#132420">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PassCyber">
+<meta property="og:title" content="Penetration testing and Cyber Essentials Plus, managed for you">
+<meta property="og:description" content="CREST-accredited penetration testing and Cyber Essentials Plus for small businesses, scoped and managed by PassCyber from first call to final report. Send what you need tested for a fixed quote.">
+<meta property="og:url" content="https://passcyber.co.uk/testing">
+<meta property="og:locale" content="en_GB">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/guide.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Penetration testing and Cyber Essentials Plus, managed for you", "description": "CREST-accredited penetration testing and Cyber Essentials Plus for small businesses, scoped and managed by PassCyber from first call to final report. Send what you need tested for a fixed quote.", "url": "https://passcyber.co.uk/testing", "isPartOf": {"@type": "WebSite", "name": "PassCyber", "url": "https://passcyber.co.uk/"}, "publisher": {"@type": "Organization", "name": "Edwards Bros (Spaldwick) Ltd", "url": "https://www.edwardsbros.co.uk/"}}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="/">Pass<b>Cyber</b></a>
+    <nav>
+      <a href="/guides/">Guides</a>
+      <a href="/check">Readiness Check</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div class="wrap">
+<div class="doc">
+  <span class="crumb"><a href="/">PassCyber</a> / Testing</span>
+  <h1>Penetration testing and Cyber Essentials Plus, without managing it yourself.</h1>
+  <p class="stand">Tell us what needs testing. We agree the scope with you, line up CREST-accredited testers, get your written permission before anything starts, and turn the report into a plain-English fix list.</p>
+
+<div class="prose">
+
+<h2>Penetration testing</h2>
+<p>An authorised, simulated attack on your website, office network or cloud services, to find weaknesses before someone else does. Customers, insurers and tenders increasingly ask for one each year. Testing is carried out by CREST-accredited testers, and by CHECK-certified testers where public-sector or defence work needs it.</p>
+
+<h2>Cyber Essentials Plus</h2>
+<p>The hands-on version of Cyber Essentials: an assessor checks a sample of your devices and accounts against the five controls. It is carried out by an IASME-licensed Certification Body. We get you ready first, so it passes, then arrange and manage the audit.</p>
+
+<h2>How it works</h2>
+<ol>
+<li>You tell us what you need and why (a contract, an insurer, your own peace of mind).</li>
+<li>We agree the scope and send a fixed quote.</li>
+<li>You sign our authorisation to test. Nothing is tested without it.</li>
+<li>The test or audit is carried out, and you get the report with our fix list.</li>
+</ol>
+
+<h2>What it costs</h2>
+<p>Every test is quoted to its scope, as a fixed price before work starts. A small external test is typically a couple of days of testing; a web application usually takes longer. Your quote shows exactly what is covered.</p>
+
+<div class="cta" id="quote">
+  <div class="t">PassCyber &middot; testing quote</div>
+  <h2>Ask for a fixed quote</h2>
+  <form id="qform" novalidate style="display:grid;gap:10px;max-width:520px">
+    <select id="qwhat" aria-label="What do you need" style="padding:12px;font:inherit">
+      <option value="pentest">Penetration test</option>
+      <option value="ceplus">Cyber Essentials Plus</option>
+      <option value="both">Both, or not sure</option>
+    </select>
+    <textarea id="qdetail" maxlength="400" placeholder="What needs testing, and who is asking for it? (website, office network, cloud, a contract or insurer)" style="padding:12px;font:inherit;min-height:80px"></textarea>
+    <input type="email" id="qemail" placeholder="you@business.co.uk" aria-label="Email address" style="padding:12px;font:inherit">
+    <button type="submit" class="btn btn-go" style="padding:12px;font:inherit;cursor:pointer">Send for a quote</button>
+  </form>
+  <p id="qok" style="display:none;color:#fff;font-weight:600">Done. We will reply the same working day.</p>
+  <p id="qerr" style="display:none;color:#ffb4a2"></p>
+  <p class="sig">PassCyber is a trading name of Edwards Bros (Spaldwick) Ltd. Testing is carried out by accredited specialists under our management.</p>
+</div>
+
+</div>
+</div>
+</div>
+<script>
+document.getElementById('qform').addEventListener('submit',async function(e){
+  e.preventDefault();
+  var em=document.getElementById('qemail').value.trim(), err=document.getElementById('qerr');
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){err.textContent='Please enter a valid email address.';err.style.display='block';return;}
+  var what=document.getElementById('qwhat').value, det=document.getElementById('qdetail').value.trim().slice(0,400);
+  var btn=this.querySelector('button'); btn.disabled=true; var ok=false;
+  try{var r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em.toLowerCase(),source:'passcyber-testing|'+what,band:'testing-'+what,details:'Wants: '+what+'. Detail: '+(det||'not given')})});ok=r.ok;}catch(x){ok=false;}
+  btn.disabled=false;
+  if(ok){err.style.display='none';this.style.display='none';document.getElementById('qok').style.display='block';}
+  else{err.innerHTML='That did not send. Please email <a href="mailto:hello@passcyber.co.uk?subject=Testing%20quote">hello@passcyber.co.uk</a>.';err.style.display='block';}
+});
+</script>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fb">PassCyber</div>
+    <p>Cyber Essentials certification support for small organisations.</p>
+    <p>PassCyber is a trading name of Edwards Bros (Spaldwick) Ltd, registered in England &amp; Wales no. 00598511, registered office Fenland House, 15b Hostmoor Avenue, March, Cambridgeshire PE15 0AX. ICO registration ZA900683. Certificates are awarded by a certification body accredited by IASME, not by PassCyber.</p>
+    <p><a href="/privacy">Privacy notice</a> · <a href="/guides/">Guides</a> · <a href="/">Home</a></p>
+  </div>
+<nav class="estate-links" aria-label="Other sites from Edwards Bros" style="font-size:.85rem;line-height:1.5;opacity:.85;margin-top:1rem"><!--estate-links-->Also from Edwards Bros (Spaldwick) Ltd: <a href="https://www.edwardsbros.co.uk/" rel="noopener">Edwards Bros</a> &middot; <a href="https://complysimple.co.uk/" rel="noopener">ComplySimple</a> &middot; <a href="https://granton.finance/" rel="noopener">Granton Finance</a></nav>
+</footer>
+
+</body>
+</html>

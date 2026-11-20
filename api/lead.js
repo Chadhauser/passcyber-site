@@ -47,7 +47,8 @@ export default async function handler(req, res) {
   const flags = (body.flags && typeof body.flags === 'object') ? body.flags : {};
   const details = clean(body.details, 600);
   const isDcc = source.startsWith('passcyber-dcc');
-  const label = isDcc ? 'DCC Level 0 check' : 'CE readiness check';
+  const isTesting = source.startsWith('passcyber-testing');
+  const label = isTesting ? 'Testing quote request' : (isDcc ? 'DCC Level 0 check' : 'CE readiness check');
 
   const problems = [];
   if (flags.mfa) problems.push('multi-factor authentication');
@@ -59,12 +60,12 @@ export default async function handler(req, res) {
 
   if (process.env.RESEND_API_KEY && process.env.NOTIFY_EMAIL && process.env.FROM_EMAIL) {
     const text = [
-      isDcc ? `New DCC Level 0 readiness check completed. They asked for a quote.` : `New Cyber Essentials readiness check completed.`,
+      isTesting ? `New quote request for penetration testing or Cyber Essentials Plus.` : (isDcc ? `New DCC Level 0 readiness check completed. They asked for a quote.` : `New Cyber Essentials readiness check completed.`),
       ``,
       `Email:    ${email}`,
       `Score:    ${score === null ? 'n/a' : score}`,
       `Band:     ${band || 'n/a'}`,
-      ...(isDcc ? [] : [`Problems: ${problems.length ? problems.join(', ') : 'none flagged'}`]),
+      ...((isDcc || isTesting) ? [] : [`Problems: ${problems.length ? problems.join(', ') : 'none flagged'}`]),
       ...(details ? [`Details:  ${details}`] : []),
       ``,
       `Source:   ${source}`,
