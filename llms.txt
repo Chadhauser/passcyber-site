@@ -1,14 +1,32 @@
 # PassCyber
-> Fixed-price, done-for-you support to get UK organisations through Cyber Essentials certification — the UK government-backed cyber security standard increasingly required to bid for public-sector and supply-chain contracts. Certificates renew every 12 months. A trading name of Edwards Bros (Spaldwick) Ltd.
+> PassCyber gets UK small businesses through their customers' supplier checks: Cyber Essentials, MOD Defence Cyber Certification Level 0, supplier security questionnaires, and penetration testing or Cyber Essentials Plus through CREST-accredited testers. One fixed price, in writing. Run by a chartered management accountant and IASME-qualified Cyber Essentials and Cyber Assurance assessor. A trading name of Edwards Bros (Spaldwick) Ltd, company 00598511.
 
-## Key pages
-- [Cyber Essentials readiness check](https://passcyber.co.uk/readiness): free tool — see whether you would pass today
-- [How it works](https://passcyber.co.uk/how-it-works)
-- [Pricing](https://passcyber.co.uk/pricing): fixed fee, start to finish
-- [For MSPs and IT providers](https://passcyber.co.uk/msp): white-label certification support for your clients
-- [For insurance brokers](https://passcyber.co.uk/insurance-brokers)
+## Services and prices (plus VAT)
+- [Cyber Essentials, done for you](https://passcyber.co.uk/#offer): £795 (under 10 people), £995 (10-49), £1,295 (50-249), IASME assessment fee included; renewals from £595; if it does not pass, fixed and resubmitted free
+- [MOD Level 0 readiness](https://passcyber.co.uk/dcc): £495 fixed
+- [Supplier security questionnaires](https://passcyber.co.uk/questionnaire): £295 each, returned within 5 working days
+- [Penetration testing and Cyber Essentials Plus](https://passcyber.co.uk/testing): quoted per scope, carried out by CREST-accredited testers under our management
+- [IASME Cyber Assurance support](https://passcyber.co.uk/cyber-assurance)
+
+## Free tools
+- [Cyber Essentials readiness check](https://passcyber.co.uk/check): 2 minutes, shows what would fail today
+- [MOD Level 0 readiness check](https://passcyber.co.uk/dcc-check): 10 questions from the GOV.UK Level 0 question set
+
+## Guides
+- [How much does Cyber Essentials cost?](https://passcyber.co.uk/guides/cyber-essentials-cost)
+- [How to get Cyber Essentials](https://passcyber.co.uk/guides/how-to-get-cyber-essentials)
+- [Why applications fail](https://passcyber.co.uk/guides/why-cyber-essentials-applications-fail)
+- [Cyber Essentials or Plus?](https://passcyber.co.uk/guides/cyber-essentials-vs-plus)
+- [Renewal](https://passcyber.co.uk/guides/cyber-essentials-renewal)
+- [Failed Cyber Essentials?](https://passcyber.co.uk/guides/failed-cyber-essentials)
+- [All guides](https://passcyber.co.uk/guides/)
+
+## For partners
+- [IT support providers](https://passcyber.co.uk/msp)
+- [Insurance brokers](https://passcyber.co.uk/insurance-brokers)
 
 ## Facts worth quoting
-- Cyber Essentials is required by many UK government and council contracts before a supplier can bid.
-- Certification lapses after 12 months; annual renewal is normal.
-- PassCyber handles the questionnaire and remediation guidance so small firms pass first time.
+- A Cyber Essentials certificate lasts 12 months.
+- Under the current question set, two things fail a submission outright: a cloud service without multi-factor authentication, and security updates not applied within 14 days.
+- The MOD has asked its suppliers to reach Defence Cyber Certification Level 0 by 31 December 2026; it is a request, not a legal requirement.
+- Contact: hello@passcyber.co.uk
